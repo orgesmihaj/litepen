@@ -2,7 +2,7 @@
   "name": "semantic",
   "version": "0.0.1",
   "description": "An extremely easy-to-install WYSIWYG editor of modern times. Focused on creating semantic content.",
-  "author": "Orges Mihaj",
+  "author": "Orges Mihaj (https://mihaj.org)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
