@@ -5,7 +5,9 @@
   "author": "Orges Mihaj (https://mihaj.org)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "keywords": [
     "editor",
@@ -14,7 +16,8 @@
     "JavaScript"
   ],
   "license": "ISC",
-  "dependencies": {
-    "esbuild": "^0.12.19"
+  "devDependencies": {
+    "sass": "^1.37.5",
+    "vite": "^2.4.4"
   }
 }
