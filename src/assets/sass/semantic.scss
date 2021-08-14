@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+// ITCSS by Harry Roberts
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// ⚙️ SETTINGS
+//   Used with preprocessors and contain font, colors definitions.
+
+// 🏗️ TOOLS
+//    Globally used mixins and functions. It’s important not to 
+//    output any CSS in the first 2 layers.
+
+// 🚧 GENERIC
+//    Reset and/or normalize styles, box-sizing definition, etc.
+//    This is the first layer which generates actual CSS.
+
+// 🪨 ELEMENTS
+//    Define styles for bare HTML elements (like H1, A, IMG, ...)
+
+// 🧱 OBJECTS
+//    Class-based selectors which define undecorated design patterns.
+
+// 🦄 TRUMPS
+//    Utilities and helper classes with ability to override anything
+//    which goes before in the triangle, eg. hide helper class.
