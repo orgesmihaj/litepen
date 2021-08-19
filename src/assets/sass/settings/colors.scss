@@ -1,0 +1,37 @@
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// COLORS
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// “To shine your brightest light is to be who you truly are.”
+// — Roy T. Bennett 
+
+.🌞 {
+  --brand-color: hsl(
+    var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
+  );
+
+  --text-color: hsl(var(--brand-hue) var(--brand-saturation) 10%);
+  --text-light-color: hsl(var(--brand-hue) 30% 30%);
+}
+
+// “What hurts you, blesses you. Darkness is your candle.”
+// — Rumi
+
+.🌚 {
+  --brand-color: hsl(
+    var(--brand-hue) calc(var(--brand-saturation) / 2) calc(var(--brand-lightness) / 1.5)
+  );
+
+  --text-color: hsl(var(--brand-hue) 15% 85%);
+  --text-light-color: hsl(var(--brand-hue) 5% 65%);
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+:root {
+  --brand-hue         : 22;
+  --brand-saturation  : 85%;
+  --brand-lightness   : 62%;
+
+  @extend .🌞;
+}
