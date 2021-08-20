@@ -5,14 +5,21 @@
 
 // ⚙️ SETTINGS
 //   Used with preprocessors and contain font, colors definitions.
+@import "settings/global";
+@import "settings/colors";
 
 // 🏗️ TOOLS
 //    Globally used mixins and functions. It’s important not to 
 //    output any CSS in the first 2 layers.
 
+
 // 🚧 GENERIC
 //    Reset and/or normalize styles, box-sizing definition, etc.
 //    This is the first layer which generates actual CSS.
+@import "generic/box-sizing.scss";
+@import "generic/normalize.scss";
+@import "generic/reset.scss";
+@import "generic/shared.scss";
 
 // 🪨 ELEMENTS
 //    Define styles for bare HTML elements (like H1, A, IMG, ...)
