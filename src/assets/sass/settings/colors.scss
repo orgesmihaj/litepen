@@ -2,36 +2,52 @@
 // COLORS
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-// “To shine your brightest light is to be who you truly are.”
-// — Roy T. Bennett 
-
 .🌞 {
-  --brand-color: hsl(
-    var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
-  );
+  --text-1: hsl(var(--brand-hue) var(--brand-saturation) 10%);
+  --text-2: hsl(var(--brand-hue) 30% 30%);
 
-  --text-color: hsl(var(--brand-hue) var(--brand-saturation) 10%);
-  --text-light-color: hsl(var(--brand-hue) 30% 30%);
+  --surface-1: hsl(var(--brand-hue) 25% 90%);
+  --surface-2: hsl(var(--brand-hue) 20% 99%);
+  --surface-3: hsl(var(--brand-hue) 20% 92%);
+  --surface-4: hsl(var(--brand-hue) 20% 85%);
 }
 
-// “What hurts you, blesses you. Darkness is your candle.”
-// — Rumi
-
 .🌚 {
-  --brand-color: hsl(
-    var(--brand-hue) calc(var(--brand-saturation) / 2) calc(var(--brand-lightness) / 1.5)
-  );
+  --brand-saturation : calc(var(--brand-saturation) / 2);
+  --brand-lightness  : calc(var(--brand-lightness) / 1.5);
 
-  --text-color: hsl(var(--brand-hue) 15% 85%);
-  --text-light-color: hsl(var(--brand-hue) 5% 65%);
+  --text-1: hsl(var(--brand-hue) 15% 85%);
+  --text-2: hsl(var(--brand-hue) 5% 65%);
+
+  --surface-1: hsl(var(--brand-hue) 10% 10%);
+  --surface-2: hsl(var(--brand-hue) 10% 15%);
+  --surface-3: hsl(var(--brand-hue) 5% 20%);
+  --surface-4: hsl(var(--brand-hue) 5% 25%);
+}
+
+.🌗 {
+  --brand-saturation : calc(var(--brand-saturation) / 2);
+  --brand-lightness  : calc(var(--brand-lightness) / 1.5);
+
+  --text-1: hsl(var(--brand-hue) 15% 75%);
+  --text-2: hsl(var(--brand-hue) 10% 61%);
+
+  --surface-1: hsl(var(--brand-hue) 10% 20%);
+  --surface-2: hsl(var(--brand-hue) 10% 25%);
+  --surface-3: hsl(var(--brand-hue) 5%  30%);
+  --surface-4: hsl(var(--brand-hue) 5% 35%);
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 :root {
-  --brand-hue         : 22;
-  --brand-saturation  : 85%;
-  --brand-lightness   : 62%;
+  --brand-hue        : 22;
+  --brand-saturation : 85%;
+  --brand-lightness  : 62%;
+
+  --brand-color: hsl(
+    var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
+  );
 
   @extend .🌞;
 }
