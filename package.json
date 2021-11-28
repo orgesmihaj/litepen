@@ -1,23 +1,43 @@
 {
-  "name": "semantic",
-  "version": "0.0.1",
-  "description": "An extremely easy-to-install WYSIWYG editor of modern times. Focused on creating semantic content.",
-  "author": "Orges Mihaj (https://mihaj.org)",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  "keywords": [
-    "editor",
-    "WYSIWYG",
-    "JS",
-    "JavaScript"
-  ],
-  "license": "ISC",
-  "devDependencies": {
-    "sass": "^1.37.5",
-    "vite": "^2.4.4"
-  }
+	"name": "semantic",
+	"version": "0.0.1",
+	"description": "An extremely easy-to-install WYSIWYG editor of modern times. Focused on creating semantic content.",
+	"author": "Orges Mihaj (https://mihaj.org)",
+	"main": "index.js",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"serve": "vite preview",
+		"lint": "eslint --ext .js,.jsx --ignore-path .gitignore --fix src",
+		"lint:fix": "npm run lint -- --fix",
+		"prettier": "npx prettier src test --check",
+		"prettier:fix": "npm run prettier -- --write",
+		"format": "npm run prettier:fix && npm run lint:fix",
+		"prepare": "husky install"
+	},
+	"keywords": [
+		"editor",
+		"WYSIWYG",
+		"JS",
+		"JavaScript"
+	],
+	"license": "ISC",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.4.0",
+		"@typescript-eslint/parser": "^5.4.0",
+		"eslint": "^8.3.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.25.3",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.1.2",
+		"prettier": "2.5.0",
+		"sass": "^1.37.5",
+		"typescript": "^4.5.2",
+		"vite": "^2.4.4"
+	},
+	"lint-staged": {
+		"*.{js,jsx}": "eslint --cache --fix",
+		"*.lint:fix": "prettier --write"
+	}
 }
