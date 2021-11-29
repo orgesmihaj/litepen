@@ -4,6 +4,10 @@ node_modules/
 build/
 dist/
 
+# CSS
+src/assets/sass/settings
+src/assets/sass/generic
+
 # IDEs and editors
 .idea
 .project
