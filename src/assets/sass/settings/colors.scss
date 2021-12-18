@@ -2,52 +2,28 @@
 // COLORS
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-.🌞 {
-  --text-1: hsl(var(--brand-hue) var(--brand-saturation) 10%);
-  --text-2: hsl(var(--brand-hue) 30% 30%);
-
-  --surface-1: hsl(var(--brand-hue) 25% 90%);
-  --surface-2: hsl(var(--brand-hue) 20% 99%);
-  --surface-3: hsl(var(--brand-hue) 20% 92%);
-  --surface-4: hsl(var(--brand-hue) 20% 85%);
-}
-
-.🌚 {
-  --brand-saturation : calc(var(--brand-saturation) / 2);
-  --brand-lightness  : calc(var(--brand-lightness) / 1.5);
-
-  --text-1: hsl(var(--brand-hue) 15% 85%);
-  --text-2: hsl(var(--brand-hue) 5% 65%);
-
-  --surface-1: hsl(var(--brand-hue) 10% 10%);
-  --surface-2: hsl(var(--brand-hue) 10% 15%);
-  --surface-3: hsl(var(--brand-hue) 5% 20%);
-  --surface-4: hsl(var(--brand-hue) 5% 25%);
-}
-
-.🌗 {
-  --brand-saturation : calc(var(--brand-saturation) / 2);
-  --brand-lightness  : calc(var(--brand-lightness) / 1.5);
-
-  --text-1: hsl(var(--brand-hue) 15% 75%);
-  --text-2: hsl(var(--brand-hue) 10% 61%);
-
-  --surface-1: hsl(var(--brand-hue) 10% 20%);
-  --surface-2: hsl(var(--brand-hue) 10% 25%);
-  --surface-3: hsl(var(--brand-hue) 5%  30%);
-  --surface-4: hsl(var(--brand-hue) 5% 35%);
-}
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+@import "./colors.light.scss";
+@import "./colors.dim.scss";
+@import "./colors.dark.scss";
 
 :root {
-  --brand-hue        : 22;
-  --brand-saturation : 85%;
-  --brand-lightness  : 62%;
+  color-scheme: light dark;
 
-  --brand-color: hsl(
-    var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
-  );
+  /**
+   * Brand color
+   */
+  --brand-hue: 152;
+  --brand-saturation: 24%;
+  --brand-lightness: 55%;
 
-  @extend .🌞;
+  /**
+   * Accent color
+   */
+  --accent-hue: 203;
+  --accent-saturation: 40%;
+  --accent-lightness: 44%;
 }
+
+[color-scheme="🌞"] { @include light-color-scheme; }
+[color-scheme="🌗"] { @include dim-color-scheme;   }
+[color-scheme="🌚"] { @include dark-color-scheme;  }
