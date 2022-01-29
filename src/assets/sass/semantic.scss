@@ -5,28 +5,27 @@
 
 // ⚙️ SETTINGS
 //   Used with preprocessors and contain font, colors definitions.
-@import "settings/global";
-@import "settings/colors";
+@import 'settings/global';
+@import 'settings/colors';
+@import 'settings/typography.scss';
+@import 'settings/breakpoints.scss';
 
 // 🏗️ TOOLS
-//    Globally used mixins and functions. It’s important not to 
+//    Globally used mixins and functions. It’s important not to
 //    output any CSS in the first 2 layers.
-
+@import 'tools/queries.scss';
 
 // 🚧 GENERIC
 //    Reset and/or normalize styles, box-sizing definition, etc.
 //    This is the first layer which generates actual CSS.
-@import "generic/box-sizing.scss";
-@import "generic/normalize.scss";
-@import "generic/reset.scss";
-@import "generic/shared.scss";
+@import 'generic/box-sizing.scss';
+@import 'generic/normalize.scss';
+@import 'generic/reset.scss';
+@import 'generic/shared.scss';
 
 // 🪨 ELEMENTS
 //    Define styles for bare HTML elements (like H1, A, IMG, ...)
+@import 'elements/headings.scss';
 
 // 🧱 OBJECTS
 //    Class-based selectors which define undecorated design patterns.
-
-// 🦄 TRUMPS
-//    Utilities and helper classes with ability to override anything
-//    which goes before in the triangle, eg. hide helper class.
