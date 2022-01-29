@@ -3,6 +3,7 @@
 node_modules/
 build/
 dist/
+.eslintcache
 
 # IDEs and editors
 .idea
@@ -12,6 +13,7 @@ dist/
 *.launch
 .settings/
 *.sublime-workspace
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
