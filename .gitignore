@@ -3,7 +3,10 @@
 node_modules/
 build/
 dist/
+
+# Logs
 .eslintcache
+.pnpm-debug.log
 
 # IDEs and editors
 .idea
