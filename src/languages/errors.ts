@@ -1,6 +1,5 @@
 const errors = {
-	isNull:
-		'\n\n Looks like a mayday situation!\n Please check if the element is null or not.\n',
+	isNull: `\n\n 🛑 The holder is missing. Please, checkout whether a DOM Element is properly selected.  \n`,
 };
 
 export default errors;
