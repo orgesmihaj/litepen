@@ -1,4 +1,4 @@
-interface Settings {
+export interface ISettings {
 	/**
 	 * Editor Autofocus Mode
 	 * -> Set a Caret to the Editor after initialization.
@@ -47,23 +47,49 @@ interface Settings {
 	 */
 
 	placeholder?: string;
+
+	/*
+	 * Editor Default Settings
+	 * -> A list of default settings to be applied to the Editor.
+	 */
+
+	defaults?: ISettings;
+
+	/*
+	 * Editor settings' override method
+	 * -> Override the default settings with the given ones.
+	 */
+
+	overriddenBy?(settings: ISettings): ISettings;
 }
 
-class Settings {
-	public static defaults(): Settings {
-		return {
-			autofocus: true,
-			content: {},
-			debounce: 500,
-			editable: true,
-			extensions: [],
-			holder: null,
-			placeholder: 'Write something...',
-		};
-	}
+class Settings implements ISettings {
+	readonly autofocus: boolean = false;
 
-	public static overriddenBy(settings: Settings): Settings {
-		return { ...Settings.defaults(), ...settings };
+	readonly content: Object | HTMLElement = {};
+
+	readonly debounce: number = 330;
+
+	readonly editable: boolean = true;
+
+	readonly extensions: Array<any> = [];
+
+	readonly holder: HTMLElement | null = null;
+
+	readonly placeholder: string = '';
+
+	readonly defaults: ISettings = {
+		autofocus: this.autofocus,
+		content: this.content,
+		debounce: this.debounce,
+		editable: this.editable,
+		extensions: this.extensions,
+		holder: this.holder,
+		placeholder: this.placeholder,
+	};
+
+	overriddenBy(settings: ISettings): ISettings {
+		return { ...this.defaults, ...settings };
 	}
 }
 
