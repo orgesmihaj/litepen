@@ -39,7 +39,7 @@ type Settings = {
 	 * -> Bind the Editor to a specific element or selector.
 	 */
 
-	holder: HTMLElement | null;
+	holder?: Element | null;
 
 	/*
 	 * Editor Placeholder

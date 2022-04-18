@@ -62,4 +62,19 @@ describe('Settings object', () => {
 			...alternations,
 		});
 	});
+
+	it('will override settings coming from object initialization.', () => {
+		const alternations: TSettings = {
+			autofocus: false,
+			debounce: 100,
+			editable: false,
+		};
+
+		const settings = new Settings(alternations);
+
+		expect(settings.all()).toMatchObject({
+			...defaults,
+			...alternations,
+		});
+	});
 });

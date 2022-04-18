@@ -13,7 +13,7 @@ class Settings implements ISettings {
 	});
 
 	constructor(settings: TSettings = {}) {
-		this.settings = Object.assign(this.settings, settings);
+		this.overriddenBy(settings);
 	}
 
 	/**
