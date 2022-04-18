@@ -12,7 +12,10 @@ class Settings implements ISettings {
 		placeholder: '',
 	});
 
-	constructor(settings: TSettings = {}) {
+	constructor(settings: TSettings) {
+		if (settings === undefined) {
+			return;
+		}
 		this.overriddenBy(settings);
 	}
 
