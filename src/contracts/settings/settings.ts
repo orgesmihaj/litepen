@@ -22,7 +22,7 @@ interface ISettings {
 	 * @param  {TSettings} settings
 	 * @returns TSettings
 	 */
-	overriddenBy(settings: object): object;
+	overriddenBy(settings: TSettings): TSettings;
 
 	/**
 	 * Set a given configuration value.
