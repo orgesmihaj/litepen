@@ -2,7 +2,7 @@
 // EDITOR
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-.editor[contenteditable='true']:empty:before {
+[data-editor='editor'][contenteditable='true']:empty:before {
 	content: attr(placeholder);
 	display: block;
 	pointer-events: none;
