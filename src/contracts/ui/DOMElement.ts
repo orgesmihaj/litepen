@@ -5,7 +5,7 @@ interface IDOMElement {
 	 * @param  {boolean} status - Define whether the placeholder will appear or not.
 	 * @returns this
 	 */
-	hasPlaceholder(status: boolean): this;
+	hasPlaceholder(status?: boolean): this;
 
 	/**
 	 * Attach a class-based identifier to the element
@@ -21,7 +21,7 @@ interface IDOMElement {
 	 *
 	 * @returns this
 	 */
-	isEditable(status: boolean): this;
+	isEditable(status?: boolean): this;
 
 	/**
 	 * Return the element specified in the settings.
