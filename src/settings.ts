@@ -1,5 +1,5 @@
-import ISettings from '../contracts/settings/settings';
-import TSettings from '../types/settings';
+import ISettings from './contracts/settings';
+import TSettings from './types/settings';
 
 class Settings implements ISettings {
 	private settings: TSettings = Object.seal({

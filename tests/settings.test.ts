@@ -1,5 +1,5 @@
 import { expect, describe, it } from 'vitest';
-import Settings from '../src/settings/settings';
+import Settings from '../src/settings';
 import TSettings from '../src/types/settings';
 
 describe('Settings object', () => {

@@ -1,4 +1,4 @@
-type Settings = {
+type TSettings = {
 	/**
 	 * Editor Autofocus Mode
 	 * -> Set a Caret to the Editor after initialization.
@@ -49,4 +49,4 @@ type Settings = {
 	placeholder?: string;
 };
 
-export default Settings;
+export default TSettings;
