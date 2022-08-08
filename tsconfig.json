@@ -1,5 +1,11 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@contracts/*": ["src/contracts/*"],
+			"@ui/*": ["./src/ui/*"]
+		},
 		"target": "ESNext",
 		"useDefineForClassFields": true,
 		"module": "ESNext",
