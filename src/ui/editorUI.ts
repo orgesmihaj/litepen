@@ -1,7 +1,7 @@
-import ISettings from '../contracts/settings/settings';
-import IDOMElement from '../contracts/ui/DOMElement';
+import ISettings from '@contracts/settings';
+import IEditorUI from '@contracts/ui/editorUI';
 
-class DOMElement implements IDOMElement {
+class EditorUI implements IEditorUI {
 	private element: Element | null;
 
 	private settings: ISettings;
@@ -34,7 +34,7 @@ class DOMElement implements IDOMElement {
 	 * @param  {boolean} status - Define whether the placeholder will appear or not.
 	 * @returns this
 	 */
-	hasPlaceholder(status: boolean = true): this {
+	placeholder(status: boolean = true): this {
 		if (!this.element) {
 			throw new Error(
 				'The holder is missing. Please, checkout whether a DOM Element is properly selected.'
@@ -60,7 +60,7 @@ class DOMElement implements IDOMElement {
 	 * @param  {boolean} status - Define whether the element is editable or not.
 	 * @returns this
 	 */
-	isEditable(status: boolean = true): this {
+	editable(status: boolean = true): this {
 		if (!this.element) {
 			throw new Error(
 				'The holder is missing. Please, checkout whether a DOM Element is properly selected.'
@@ -85,4 +85,4 @@ class DOMElement implements IDOMElement {
 	}
 }
 
-export default DOMElement;
+export default EditorUI;

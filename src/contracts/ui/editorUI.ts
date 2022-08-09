@@ -1,11 +1,11 @@
-interface IDOMElement {
+interface IEditorUI {
 	/**
 	 * Set the placeholder for the element.
 	 *
 	 * @param  {boolean} status - Define whether the placeholder will appear or not.
 	 * @returns this
 	 */
-	hasPlaceholder(status?: boolean): this;
+	placeholder(status?: boolean): this;
 
 	/**
 	 * Attach a class-based identifier to the element
@@ -21,7 +21,7 @@ interface IDOMElement {
 	 *
 	 * @returns this
 	 */
-	isEditable(status?: boolean): this;
+	editable(status?: boolean): this;
 
 	/**
 	 * Return the element specified in the settings.
@@ -31,4 +31,4 @@ interface IDOMElement {
 	paint(): Element;
 }
 
-export default IDOMElement;
+export default IEditorUI;
