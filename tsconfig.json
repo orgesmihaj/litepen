@@ -4,7 +4,8 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@contracts/*": ["src/contracts/*"],
-			"@ui/*": ["./src/ui/*"]
+			"@ui/*": ["./src/ui/*"],
+			"@types/*": ["src/types/*"]
 		},
 		"target": "ESNext",
 		"useDefineForClassFields": true,
