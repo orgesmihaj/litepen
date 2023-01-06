@@ -1,8 +1,8 @@
-import IMutationUI from '@contracts/ui/mutationUI';
+import IMutation from '@contracts/mutation';
 import IEditorUI from '@contracts/ui/editorUI';
-import { TMutationCallback } from '../types/mutation';
+import { TMutationCallback } from 'types/mutation';
 
-class MutationUI implements IMutationUI {
+class Mutation implements IMutation {
 	private element!: IEditorUI;
 
 	private configs = {
@@ -14,9 +14,6 @@ class MutationUI implements IMutationUI {
 
 	/**
 	 * Define the element to be observed.
-	 *
-	 * @param element IEditorUI
-	 * @returns this
 	 */
 	on(element: IEditorUI): this {
 		this.element = element;
@@ -25,21 +22,17 @@ class MutationUI implements IMutationUI {
 
 	/**
 	 * Capture any change in the element content.
-	 *
-	 * @returns void
 	 */
 	capture(callback: TMutationCallback): void {
 		if (!this.element) {
 			return;
 		}
-		const observer = new MutationObserver(
-			(mutationRecords: MutationRecord[]) => {
-				mutationRecords.forEach(record => callback(record));
-			}
-		);
+		const observer = new MutationObserver((records: MutationRecord[]) => {
+			records.forEach(record => callback(record));
+		});
 
 		observer.observe(this.element.paint(), this.configs);
 	}
 }
 
-export default MutationUI;
+export default Mutation;

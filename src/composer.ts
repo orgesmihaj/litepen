@@ -1,7 +1,7 @@
-import TSettings from './types/settings';
+import TSettings from 'types/settings';
 import Settings from './settings';
 import EditorUI from './ui/editorUI';
-import MutationUI from './ui/mutationUI';
+import Mutation from './mutation';
 import Editor from './editor';
 
 import './assets/sass/objects/editor.scss';
@@ -10,7 +10,7 @@ class Composer {
 	constructor(settings: TSettings) {
 		const editor = new Editor(
 			new EditorUI(new Settings(settings)),
-			new MutationUI()
+			new Mutation()
 		);
 
 		editor.ignite();

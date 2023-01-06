@@ -1,13 +1,13 @@
-C
+import IEditor from '@contracts/editor';
 import IEditorUI from '@contracts/ui/editorUI';
-import IMutationUI from './contracts/ui/mutationUI';
+import IMutation from '@contracts/mutation';
 
 class Editor implements IEditor {
 	private element: IEditorUI;
 
-	private mutation: IMutationUI;
+	private mutation: IMutation;
 
-	constructor(element: IEditorUI, mutation: IMutationUI) {
+	constructor(element: IEditorUI, mutation: IMutation) {
 		this.element = element;
 		this.mutation = mutation;
 	}
@@ -18,15 +18,12 @@ class Editor implements IEditor {
 	 * @returns void
 	 */
 	onChange(): void {
-		this.mutation.on(this.element).capture(record => {
-			console.log(record);
-		});
+		this.mutation.on(this.element).capture(() => {});
 	}
 
 	/**
 	 * Convert the content to JSON or HTML.
 	 *
-	 * @param  {Boolean} asHTML
 	 * @returns void
 	 */
 	onSave(): void {
