@@ -1,35 +1,23 @@
-import TSettings from '../types/settings';
+import TSettings from "types/settings";
 
 interface ISettings {
 	/**
-	 * Get a list of all of the configuration items.
-	 *
-	 * @return {TSettings}
+	 * Get a list of all the configuration items.
 	 */
 	all(): TSettings;
 
 	/**
-	 * Get a the value of a specific setting.
-	 *
-	 * @param  {Key} key
-	 * @returns TSettings
+	 * Get the value of a specific setting.
 	 */
 	get<Key extends keyof TSettings>(key: Key): TSettings[Key];
 
 	/**
 	 * Override the default settings by the given ones.
-	 *
-	 * @param  {TSettings} settings
-	 * @returns TSettings
 	 */
 	overriddenBy(settings: TSettings): TSettings;
 
 	/**
 	 * Set a given configuration value.
-	 *
-	 * @param  {Key} key
-	 * @param  {TSettings[Key]} value
-	 * @returns void
 	 */
 	set<Key extends keyof TSettings>(key: Key, value: TSettings[Key]): void;
 }

@@ -1,5 +1,5 @@
-import ISettings from './contracts/settings';
-import TSettings from './types/settings';
+import ISettings from '@contracts/settings';
+import TSettings from 'types/settings';
 
 class Settings implements ISettings {
 	private settings: TSettings = Object.seal({
@@ -20,19 +20,14 @@ class Settings implements ISettings {
 	}
 
 	/**
-	 * Get a list of all of the configuration items.
-	 *
-	 * @return array
+	 * Get a list of all the configuration items.
 	 */
 	public all(): TSettings {
 		return this.settings;
 	}
 
 	/**
-	 * Get a the value of a specific setting.
-	 *
-	 * @param  {Key} key
-	 * @returns TSettings
+	 * Get the value of a specific setting.
 	 */
 	public get<Key extends keyof TSettings>(key: Key): TSettings[Key] {
 		return this.settings[key];
@@ -40,10 +35,6 @@ class Settings implements ISettings {
 
 	/**
 	 * Set a given configuration value.
-	 *
-	 * @param  {Key} key
-	 * @param  {TSettings[Key]} value
-	 * @returns void
 	 */
 	public set<Key extends keyof TSettings>(
 		key: Key,
@@ -57,9 +48,6 @@ class Settings implements ISettings {
 
 	/**
 	 * Override the default settings by the given ones.
-	 *
-	 * @param  {TSettings} settings
-	 * @returns TSettings
 	 */
 	overriddenBy(settings: TSettings): TSettings {
 		(Object.keys(settings) as Array<keyof TSettings>).map(key =>
