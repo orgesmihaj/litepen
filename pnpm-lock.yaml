@@ -2577,7 +2577,7 @@ packages:
       source-map-support: 0.5.21
       vite: 4.0.4_gbtubgmdrx2jbx53kyqxwwqjo4
     transitivePeerDependencies:
-      - '@types/node'
+      - 'types/node'
       - less
       - sass
       - stylus
