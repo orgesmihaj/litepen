@@ -24,7 +24,8 @@
 		"vite.config.js",
 		"src/**/*.ts",
 		"tests/**/*.ts",
-		"typings/**/*.ts"
+		"typings/**/*.ts",
+	  	"contracts/**/*.ts"
 	],
 	"exclude": ["node_modules"]
 }
