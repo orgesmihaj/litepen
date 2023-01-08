@@ -1,4 +1,4 @@
-import IEditorUI from '@contracts/ui/editorUI';
+import IEditorUI from 'contracts/ui/editorUI';
 import { TMutationCallback } from 'types/mutation';
 
 interface IMutation {
