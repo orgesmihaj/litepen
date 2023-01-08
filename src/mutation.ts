@@ -27,11 +27,23 @@ class Mutation implements IMutation {
 		if (!this.element) {
 			return;
 		}
-		const observer = new MutationObserver((records: MutationRecord[]) => {
-			records.forEach(record => callback(record));
-		});
+		const observer = new MutationObserver(this.debounce(callback, 330));
 
 		observer.observe(this.element.paint(), this.configs);
+	}
+
+	/**
+	 * Wait until a certain amount of time has passed
+	 * before triggering the callback.
+	 * */
+	debounce(callback: TMutationCallback, pause: number): TMutationCallback {
+		let timeout: ReturnType<typeof setTimeout>;
+
+		return (records: MutationRecord[]): void => {
+			clearTimeout(timeout);
+
+			timeout = setTimeout(() => callback(records), pause);
+		};
 	}
 }
 
