@@ -1,8 +1,7 @@
-import ISettings from '@contracts/settings';
 import TSettings from 'types/settings';
 
-class Settings implements ISettings {
-	private settings: TSettings = Object.seal({
+class Settings {
+	private static settings: TSettings = Object.seal({
 		autofocus: true,
 		content: {},
 		debounce: 330,
@@ -12,48 +11,61 @@ class Settings implements ISettings {
 		placeholder: '',
 	});
 
-	constructor(settings: TSettings) {
+	private static instance: Settings;
+
+	private constructor(settings: TSettings) {
 		if (settings === undefined) {
 			return;
 		}
-		this.overriddenBy(settings);
+		Settings.overriddenBy(settings);
+	}
+
+	/**
+	 * Create a new instance of the Settings class
+	 * or return the existing one. This is a singleton.
+	 */
+	static use(settings: TSettings): Settings {
+		if (!Settings.instance) {
+			Settings.instance = new Settings(settings);
+		}
+		return Settings.instance;
 	}
 
 	/**
 	 * Get a list of all the configuration items.
 	 */
-	public all(): TSettings {
-		return this.settings;
+	static all(): TSettings {
+		return Settings.settings;
 	}
 
 	/**
 	 * Get the value of a specific setting.
 	 */
-	public get<Key extends keyof TSettings>(key: Key): TSettings[Key] {
-		return this.settings[key];
+	static get<Key extends keyof TSettings>(key: Key): TSettings[Key] {
+		return Settings.settings[key];
 	}
 
 	/**
 	 * Set a given configuration value.
 	 */
-	public set<Key extends keyof TSettings>(
+	static set<Key extends keyof TSettings>(
 		key: Key,
 		value: TSettings[Key]
 	): void {
 		if (value === undefined) {
 			return;
 		}
-		this.settings[key] = value;
+		Settings.settings[key] = value;
 	}
 
 	/**
 	 * Override the default settings by the given ones.
 	 */
-	overriddenBy(settings: TSettings): TSettings {
+	static overriddenBy(settings: TSettings): TSettings {
 		(Object.keys(settings) as Array<keyof TSettings>).map(key =>
-			this.set(key, settings[key])
+			Settings.set(key, settings[key])
 		);
-		return this.settings;
+		return Settings.all();
 	}
 }
 
