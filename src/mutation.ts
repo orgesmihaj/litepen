@@ -1,6 +1,7 @@
 import IMutation from '@contracts/mutation';
 import IEditorUI from '@contracts/ui/editorUI';
 import { TMutationCallback } from 'types/mutation';
+import Settings from './settings';
 
 class Mutation implements IMutation {
 	private element!: IEditorUI;
@@ -27,7 +28,9 @@ class Mutation implements IMutation {
 		if (!this.element) {
 			return;
 		}
-		const observer = new MutationObserver(this.debounce(callback, 330));
+		const observer = new MutationObserver(
+			this.debounce(callback, Settings.get('debounce'))
+		);
 
 		observer.observe(this.element.paint(), this.configs);
 	}
@@ -36,7 +39,10 @@ class Mutation implements IMutation {
 	 * Wait until a certain amount of time has passed
 	 * before triggering the callback.
 	 * */
-	debounce(callback: TMutationCallback, pause: number): TMutationCallback {
+	debounce(
+		callback: TMutationCallback,
+		pause: number = 330
+	): TMutationCallback {
 		let timeout: ReturnType<typeof setTimeout>;
 
 		return (records: MutationRecord[]): void => {
