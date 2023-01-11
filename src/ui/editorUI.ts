@@ -1,22 +1,17 @@
-import ISettings from '@contracts/settings';
 import IEditorUI from '@contracts/ui/editorUI';
+import TSettings from 'types/settings';
+import Settings from '../settings';
 
 class EditorUI implements IEditorUI {
-	private element: Element | null;
+	private readonly element: TSettings['holder'];
 
-	private settings: ISettings;
-
-	constructor(settings: ISettings) {
-		this.element = settings.get('holder');
-		this.settings = settings;
+	constructor() {
+		this.element = Settings.get('holder');
 	}
 
 	/**
 	 * Attach a class-based identifier to the element
 	 * in order to select it on a later time.
-	 *
-	 * @param  {string} identifier
-	 * @returns Element
 	 */
 	identifyAs(identifier: string = ''): this {
 		if (!this.element) {
@@ -30,9 +25,6 @@ class EditorUI implements IEditorUI {
 
 	/**
 	 * Set the placeholder for the element.
-	 *
-	 * @param  {boolean} status - Define whether the placeholder will appear or not.
-	 * @returns this
 	 */
 	placeholder(status: boolean = true): this {
 		if (!this.element) {
@@ -46,8 +38,8 @@ class EditorUI implements IEditorUI {
 		}
 
 		const placeholder =
-			this.settings?.get('holder')?.getAttribute('placeholder') ||
-			this.settings?.get('placeholder') ||
+			Settings?.get('holder')?.getAttribute('placeholder') ||
+			Settings?.get('placeholder') ||
 			'';
 
 		this.element?.setAttribute('placeholder', placeholder);
@@ -72,8 +64,6 @@ class EditorUI implements IEditorUI {
 
 	/**
 	 * Return the element specified in the settings.
-	 *
-	 * @returns Element
 	 */
 	paint(): Element {
 		if (!this.element) {
