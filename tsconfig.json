@@ -2,12 +2,14 @@
   "compilerOptions": {
 	"baseUrl": ".",
 	"paths": {
-	  "@src/*": ["./src/*"],
-	  "@ui/*": ["./src/ui/*"],
+	  "@/*": ["./src/*"],
+	  "@assets/*": ["./src/assets/*"],
 	  "@contracts/*": ["./contracts/*"],
+	  "@factories/*": ["./factories/*"],
+	  "@ui/*": ["./src/ui/*"],
 	  "types/*": ["./types/*"],
 	},
-	"typeRoots": ["./types"],
+	"typeRoots": ["./types", "./node_modules/@types"],
 	"target": "ESNext",
 	"useDefineForClassFields": true,
 	"module": "ESNext",
@@ -28,6 +30,7 @@
 	"tests/**/*.ts",
 	"typings/**/*.ts",
 	"types/**/*.ts",
+	"factories/**/*.ts",
 	"contracts/**/*.ts"
   ],
   "exclude": ["node_modules"]
