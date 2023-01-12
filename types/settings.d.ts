@@ -39,7 +39,7 @@ type TSettings = {
 	 *
 	 * Bind the Editor to a specific HTML element or selector.
 	 */
-	holder: Element | null;
+	holder: Element;
 
 	/*
 	 * Editor Placeholder
