@@ -1,4 +1,5 @@
 import TSettings from 'types/settings';
+import Messages from '@logger/messages';
 
 class Settings {
 	private static settings: TSettings = Object.seal({
@@ -7,15 +8,15 @@ class Settings {
 		debounce: 330,
 		editable: true,
 		extensions: [],
-		holder: null,
+		holder: document.createElement('div'),
 		placeholder: '',
 	});
 
 	private static instance: Settings;
 
 	private constructor(settings: TSettings) {
-		if (settings === undefined) {
-			return;
+		if (settings?.holder === null) {
+			throw new Error(Messages.HOLDER_IS_MISSING);
 		}
 		Settings.overriddenBy(settings);
 	}
@@ -26,7 +27,7 @@ class Settings {
 	 */
 	static use(settings: TSettings): Settings {
 		if (!Settings.instance) {
-			Settings.instance = new Settings(settings);
+			Settings.instance = new Settings(settings ?? this.settings);
 		}
 		return Settings.instance;
 	}
