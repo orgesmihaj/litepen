@@ -9,6 +9,7 @@ export default {
 			'@assets': path.resolve(__dirname, './src/assets'),
 			'@contacts': path.resolve(__dirname, './contacts'),
 			'@factories': path.resolve(__dirname, './factories'),
+			'@logger': path.resolve(__dirname, './src/logger'),
 			'@src': path.resolve(__dirname, './src'),
 			'@types': path.resolve(__dirname, './types'),
 			'@ui': path.resolve(__dirname, './src/ui'),

@@ -6,6 +6,7 @@
 	  "@assets/*": ["./src/assets/*"],
 	  "@contracts/*": ["./contracts/*"],
 	  "@factories/*": ["./factories/*"],
+	  "@logger/*": ["./src/logger/*"],
 	  "@ui/*": ["./src/ui/*"],
 	  "types/*": ["./types/*"],
 	},
