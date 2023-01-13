@@ -7,12 +7,12 @@ interface IEditor {
 	/**
 	 * Convert the content to JSON or HTML.
 	 */
-	onSave(asHTML: boolean): void;
+	onSave(records: MutationRecord[]): void;
 
 	/**
 	 * Bootstrap the editor.
 	 */
-	ignite(): Element;
+	ignite(): void;
 }
 
 export default IEditor;
