@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Editor</title>
+	</head>
+	<body>
+		<div
+			class="composer"
+			placeholder="Yo, let's talk..."
+		></div>
+
+		<script type="module">
+			import Composer from "@/composer";
+
+			import '@assets/sass/semantic.scss';
+			import '@assets/sass/demo.scss';
+
+			new Composer({
+				holder: document.querySelector('.composer'),
+				placeholder: 'Write something cool...',
+			});
+		</script>
+	</body>
+</html>
