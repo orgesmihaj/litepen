@@ -1,6 +1,8 @@
 import IEditorUI from '@contracts/ui/editorUI';
-import TSettings from 'types/settings';
-import Settings from '../settings';
+import { TSettings } from 'types/settings';
+import Settings from '@/settings';
+
+import '@assets/sass/objects/editor.scss';
 
 class EditorUI implements IEditorUI {
 	private readonly element: TSettings['holder'];
@@ -14,11 +16,6 @@ class EditorUI implements IEditorUI {
 	 * in order to select it on a later time.
 	 */
 	identifyAs(identifier: string = ''): this {
-		if (!this.element) {
-			throw new Error(
-				'The holder is missing. Please, checkout whether a DOM Element is properly selected.'
-			);
-		}
 		this.element.setAttribute(`data-${identifier}`, identifier);
 		return this;
 	}
@@ -27,11 +24,6 @@ class EditorUI implements IEditorUI {
 	 * Set the placeholder for the element.
 	 */
 	placeholder(status: boolean = true): this {
-		if (!this.element) {
-			throw new Error(
-				'The holder is missing. Please, checkout whether a DOM Element is properly selected.'
-			);
-		}
 		if (!status) {
 			this.element.removeAttribute('placeholder');
 			return this;
@@ -53,11 +45,6 @@ class EditorUI implements IEditorUI {
 	 * @returns this
 	 */
 	editable(status: boolean = true): this {
-		if (!this.element) {
-			throw new Error(
-				'The holder is missing. Please, checkout whether a DOM Element is properly selected.'
-			);
-		}
 		this.element?.setAttribute('contenteditable', status.toString());
 		return this;
 	}
@@ -66,11 +53,6 @@ class EditorUI implements IEditorUI {
 	 * Return the element specified in the settings.
 	 */
 	paint(): Element {
-		if (!this.element) {
-			throw new Error(
-				'The holder is missing. Please, checkout whether a DOM Element is properly selected.'
-			);
-		}
 		return this.element;
 	}
 }
