@@ -1,4 +1,4 @@
-import TSettings from 'types/settings';
+import { TSettings } from 'types/settings';
 import FEditor from '@factories/editor';
 import Settings from '@/settings';
 

@@ -1,4 +1,4 @@
-type TSettings = {
+export type TSettings = {
 	/**
 	 * Editor Autofocus Mode
 	 *
@@ -48,5 +48,3 @@ type TSettings = {
 	 */
 	placeholder?: string;
 };
-
-export default TSettings;

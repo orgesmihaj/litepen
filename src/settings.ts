@@ -1,4 +1,4 @@
-import TSettings from 'types/settings';
+import { TSettings } from 'types/settings';
 import Messages from '@logger/messages';
 
 class Settings {
