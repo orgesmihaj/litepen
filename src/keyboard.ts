@@ -2,6 +2,9 @@ import IListeners from '@contracts/listeners';
 import IKeyboard from '@contracts/keyboard';
 import { TListenerCallback } from 'types/listeners';
 
+/**
+ * Handle keyboard-related events.
+ * */
 class Keyboard implements IKeyboard {
 	/**
 	 * A map of listeners attached to the editor.
