@@ -1,5 +1,5 @@
 import IMutation from '@contracts/mutation';
-import IEditorUI from '@contracts/ui/editorUI';
+import IEditorUI from '@contracts/editorUI';
 import { TMutationCallback } from 'types/mutation';
 import Settings from './settings';
 
