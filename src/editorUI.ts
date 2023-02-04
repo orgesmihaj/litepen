@@ -1,14 +1,38 @@
-import IEditorUI from '@contracts/ui/editorUI';
-import { TSettings } from 'types/settings';
+import IEditorUI from '@contracts/editorUI';
+import IAccessibility from '@contracts/accessibility';
+import { TBlueprint } from 'types/editorUI';
 import Settings from '@/settings';
 
 import '@assets/sass/objects/editor.scss';
 
+/**
+ * Modify the DOM of the editor.
+ */
 class EditorUI implements IEditorUI {
-	private readonly element: TSettings['holder'];
+	private readonly element = Settings.get('holder');
 
-	constructor() {
-		this.element = Settings.get('holder');
+	/**
+	 * Make DOM elements accessible to screen readers.
+	 */
+	private readonly accessibility: IAccessibility;
+
+	/**
+	 * The singleton instance.
+	 */
+	private static instance: EditorUI;
+
+	private constructor(blueprint: TBlueprint) {
+		this.accessibility = blueprint.accessibility;
+	}
+
+	/**
+	 * Control access to the singleton instance.
+	 */
+	static getInstance(blueprint: TBlueprint): EditorUI {
+		if (!EditorUI.instance) {
+			EditorUI.instance = new EditorUI(blueprint);
+		}
+		return EditorUI.instance;
 	}
 
 	/**
@@ -40,9 +64,6 @@ class EditorUI implements IEditorUI {
 
 	/**
 	 * Make the element editable by the user.
-	 *
-	 * @param  {boolean} status - Define whether the element is editable or not.
-	 * @returns this
 	 */
 	editable(status: boolean = true): this {
 		this.element?.setAttribute('contenteditable', status.toString());
@@ -53,6 +74,8 @@ class EditorUI implements IEditorUI {
 	 * Return the element specified in the settings.
 	 */
 	paint(): Element {
+		this.accessibility.paragraphSeparator(document.createElement('p'));
+
 		return this.element;
 	}
 }
