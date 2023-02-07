@@ -1,6 +1,7 @@
 import IEditorUI from '@contracts/editorUI';
 import IAccessibility from '@contracts/accessibility';
 import { TBlueprint } from 'types/editorUI';
+import Messages from '@logger/messages';
 import Settings from '@/settings';
 
 import '@assets/sass/objects/editor.scss';
@@ -33,6 +34,24 @@ class EditorUI implements IEditorUI {
 			EditorUI.instance = new EditorUI(blueprint);
 		}
 		return EditorUI.instance;
+	}
+
+	/**
+	 * Attach the element to the editor's DOM.
+	 *
+	 * @note: The trailing tag is necessary because without it, an empty
+	 * 				contenteditable element may not have a visual representation,
+	 * 				leading to difficulties in formatting and editing.
+	 */
+	attach(element: HTMLElement, trailingTag: HTMLElement): this {
+		if (!this.accessibility.hasSemanticMeaning(element)) {
+			throw new Error(Messages.NO_SEMANTIC_MEANING);
+		}
+		if (trailingTag) {
+			element.appendChild(trailingTag);
+		}
+		this.element.appendChild(element);
+		return this;
 	}
 
 	/**
@@ -74,8 +93,6 @@ class EditorUI implements IEditorUI {
 	 * Return the element specified in the settings.
 	 */
 	paint(): Element {
-		this.accessibility.paragraphSeparator(document.createElement('p'));
-
 		return this.element;
 	}
 }
