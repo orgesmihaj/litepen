@@ -17,7 +17,7 @@ class HAccessibility {
 	/**
 	 * Check if the element is a semantic tag.
 	 */
-	static hasSemanticTag = (tag: HTMLElement): boolean => {
+	static isSemanticTag = (tag: HTMLElement): boolean => {
 		const semanticTags = [
 			'a',
 			'abbr',

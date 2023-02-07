@@ -23,7 +23,7 @@ class Accessibility implements IAccessibility {
 	 * Check if the element has semantic meaning.
 	 */
 	hasSemanticMeaning(tag: HTMLElement): boolean {
-		return HAccessibility.hasARIA(tag) || HAccessibility.hasSemanticTag(tag);
+		return HAccessibility.hasARIA(tag) || HAccessibility.isSemanticTag(tag);
 	}
 }
 
