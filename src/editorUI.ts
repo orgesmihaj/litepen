@@ -43,12 +43,12 @@ class EditorUI implements IEditorUI {
 	 * 				contenteditable element may not have a visual representation,
 	 * 				leading to difficulties in formatting and editing.
 	 */
-	attach(element: HTMLElement, trailingTag: HTMLElement): this {
+	attach(element: HTMLElement, trailingElement?: HTMLElement): this {
 		if (!this.accessibility.hasSemanticMeaning(element)) {
 			throw new Error(Messages.NO_SEMANTIC_MEANING);
 		}
-		if (trailingTag) {
-			element.appendChild(trailingTag);
+		if (trailingElement) {
+			element.appendChild(trailingElement);
 		}
 		this.element.appendChild(element);
 		return this;

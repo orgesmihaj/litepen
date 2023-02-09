@@ -1,3 +1,6 @@
+/**
+ * Modifies the DOM of the editor.
+ */
 interface IEditorUI {
 	/**
 	 * Attach the element to the editor's DOM.
@@ -6,7 +9,7 @@ interface IEditorUI {
 	 * 				contenteditable element may not have a visual representation,
 	 * 				leading to difficulties in formatting and editing.
 	 */
-	attach(element: HTMLElement, trailingTag: HTMLElement): this;
+	attach(element: HTMLElement, trailingElement?: HTMLElement): this;
 
 	/**
 	 * Set the placeholder for the element.
