@@ -1,41 +1,38 @@
 import IEditor from '@contracts/editor';
-import IEditorUI from '@contracts/ui/editorUI';
-import IMutation from '@contracts/mutation';
+import IEditorUI from '@contracts/editorUI';
+import IOutline from '@contracts/outline/outline';
+import IState from '@contracts/state';
+import { TBlueprint } from 'types/editor';
 
 class Editor implements IEditor {
-	private element: IEditorUI;
+	/**
+	 * Modify the DOM of the editor.
+	 */
+	private readonly editorUI: IEditorUI;
 
-	private mutation: IMutation;
+	/**
+	 * Define the outline of the editor's content.
+	 */
+	private readonly outline: IOutline;
 
-	constructor(element: IEditorUI, mutation: IMutation) {
-		this.element = element;
-		this.mutation = mutation;
+	/**
+	 * Manage the state of the editor.
+	 */
+	private readonly state: IState;
+
+	constructor(blueprint: TBlueprint) {
+		this.editorUI = blueprint.editorUI;
+		this.outline = blueprint.outline;
+		this.state = blueprint.state;
 	}
 
 	/**
-	 * Detect any change in the editor content.
-	 *
-	 * @returns void
+	 * Bootstrap the editor.
 	 */
-	onChange(): void {
-		this.mutation.on(this.element).capture(() => {});
-	}
+	ignite(): void {
+		this.editorUI.build();
 
-	/**
-	 * Convert the content to JSON or HTML.
-	 *
-	 * @returns void
-	 */
-	onSave(): void {
-		throw new Error('Method not implemented.');
-	}
-
-	ignite(): Element {
-		const editor = this.element.identifyAs('editor').editable().placeholder();
-
-		this.onChange();
-
-		return editor.paint();
+		this.outline.compose(this.state.structure());
 	}
 }
 
