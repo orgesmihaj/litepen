@@ -32,7 +32,7 @@ class Editor implements IEditor {
 	ignite(): void {
 		this.editorUI.build();
 
-		this.outline.compose(this.state.structure());
+		this.outline.compose(this.state);
 	}
 }
 
