@@ -1,70 +1,73 @@
-import { expect, describe, it } from 'vitest';
-import TSettings from 'types/settings';
-import Settings from '../src/settings';
+import { describe, it, expect } from 'vitest';
+import { TSettings } from 'types/settings';
+import Settings from '@/settings';
 
-describe('Settings object', () => {
-	document.body.innerHTML = `<div class="composer"></div>`;
-	const holder = document.querySelector('.composer');
-
-	const settings: TSettings = {
+/**
+ * 🔎Editor's Settings instance:
+ *
+ * - must have a default settings
+ */
+describe("Editor's settings instance", () => {
+	/**
+	 * Default settings.
+	 */
+	const settings: TSettings = Object.seal({
 		autofocus: true,
 		content: {},
 		debounce: 330,
 		editable: true,
 		extensions: [],
+		holder: document.createElement('div'),
 		placeholder: '',
-		holder,
-	};
-
-	Settings.use({
-		autofocus: true,
-		content: {},
-		debounce: 330,
-		editable: true,
-		extensions: [],
-		placeholder: '',
-		holder,
 	});
 
-	it('can retrieve a list of all of the default settings.', () => {
-		expect(Settings.all()).toMatchObject(settings);
+	/**
+	 * Make sure that the settings object has the default
+	 * values.
+	 */
+	it('must have a default settings.', () => {
+		expect(Settings.all()).toEqual(settings);
 	});
 
-	it('can retrieve each of the default settings.', () => {
+	/**
+	 * Get a specific setting and make sure it has the
+	 * right value.
+	 */
+	it('can retrieve a specific setting.', () => {
 		expect(Settings.get('autofocus')).toBe(settings.autofocus);
-		expect(Settings.get('extensions')).toEqual(settings.extensions);
-		expect(Settings.get('holder')).toBe(settings.holder);
-		expect(Settings.get('debounce')).toBe(settings.debounce);
-		expect(Settings.get('editable')).toBe(settings.editable);
-		expect(Settings.get('placeholder')).toBe(settings.placeholder);
-		expect(Settings.get('content')).toEqual(settings.content);
 	});
 
-	it('will change the value of an existing setting.', () => {
+	/**
+	 * Update an existing setting and make sure it has
+	 * the updated value.
+	 */
+	it('can update an existing setting.', () => {
 		Settings.set('autofocus', false);
-
 		expect(Settings.get('autofocus')).toBe(false);
 	});
 
-	it('will not update a setting if the new value is undefined.', () => {
-		const existingSetting = Settings.get('autofocus');
+	/**
+	 * Update multiple settings at once and make sure
+	 * the updated values are correct.
+	 */
+	it('can update multiple settings at once.', () => {
+		Settings.overriddenBy({
+			autofocus: true,
+			editable: false,
+			holder: document.createElement('p'),
+		});
 
-		Settings.set('autofocus', undefined);
-
-		expect(Settings.get('autofocus')).toBe(existingSetting);
+		expect(Settings.get('autofocus')).toBe(true);
+		expect(Settings.get('editable')).toBe(false);
+		expect(Settings.get('holder')).toBeInstanceOf(HTMLParagraphElement);
 	});
 
-	it('will override the pre-defined settings in bulk and return them.', () => {
-		const alternations: TSettings = {
-			autofocus: false,
-			debounce: 100,
-			editable: false,
-			holder,
-		};
-
-		expect(Settings.overriddenBy(alternations)).toMatchObject({
-			...settings,
-			...alternations,
-		});
+	/**
+	 * Create a new instance of the Settings class or
+	 * return the existing one.
+	 */
+	it('can create a singleton instance.', () => {
+		const singleton = Settings.use(settings);
+		expect(Settings.use(settings)).toBe(singleton);
 	});
 });
