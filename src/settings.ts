@@ -1,6 +1,9 @@
 import { TSettings } from 'types/settings';
 import Messages from '@logger/messages';
 
+/**
+ * Manage the settings of the editor.
+ */
 class Settings {
 	private static settings: TSettings = Object.seal({
 		autofocus: true,
@@ -33,7 +36,7 @@ class Settings {
 	}
 
 	/**
-	 * Get a list of all the configuration items.
+	 * Get a list of all the settings.
 	 */
 	static all(): TSettings {
 		return Settings.settings;
@@ -42,29 +45,31 @@ class Settings {
 	/**
 	 * Get the value of a specific setting.
 	 */
-	static get<Key extends keyof TSettings>(key: Key): TSettings[Key] {
-		return Settings.settings[key];
+	static get<Setting extends keyof TSettings>(
+		setting: Setting
+	): TSettings[Setting] {
+		return Settings.settings[setting];
 	}
 
 	/**
 	 * Set a given configuration value.
 	 */
-	static set<Key extends keyof TSettings>(
-		key: Key,
-		value: TSettings[Key]
+	static set<Setting extends keyof TSettings>(
+		setting: Setting,
+		value: TSettings[Setting]
 	): void {
 		if (value === undefined) {
 			return;
 		}
-		Settings.settings[key] = value;
+		Settings.settings[setting] = value;
 	}
 
 	/**
 	 * Override the default settings by the given ones.
 	 */
 	static overriddenBy(settings: TSettings): TSettings {
-		(Object.keys(settings) as Array<keyof TSettings>).map(key =>
-			Settings.set(key, settings[key])
+		(Object.keys(settings) as Array<keyof TSettings>).map(setting =>
+			Settings.set(setting, settings[setting])
 		);
 		return Settings.all();
 	}
