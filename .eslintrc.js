@@ -12,6 +12,15 @@ module.exports = {
 	},
 	plugins: ['@typescript-eslint'],
 	rules: {
+		'@typescript-eslint/member-ordering': [
+			'error',
+			{
+				default: {
+					memberTypes: ['field', 'constructor', 'static-method', 'method'],
+					order: 'alphabetically-case-insensitive',
+				},
+			},
+		],
 		'class-methods-use-this': 'off',
 		'no-new': 'off',
 		'spaced-comment': 0,
