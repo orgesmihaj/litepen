@@ -1,20 +1,23 @@
+import IContent from '@contracts/outline/content';
+
 /**
- * Modifies the DOM of the editor.
+ * Modify the DOM of the editor.
  */
 interface IEditorUI {
 	/**
 	 * Attach the element to the editor's DOM.
-	 *
-	 * @note: The trailing tag is necessary because without it, an empty
-	 * 				contenteditable element may not have a visual representation,
-	 * 				leading to difficulties in formatting and editing.
 	 */
-	attach(element: HTMLElement, trailingElement?: HTMLElement): this;
+	attach(content: IContent): this;
 
 	/**
-	 * Set the placeholder for the element.
+	 * Build the editor's DOM.
 	 */
-	placeholder(status?: boolean): this;
+	build(): void;
+
+	/**
+	 * Make the element editable by the user.
+	 */
+	editable(status?: boolean): this;
 
 	/**
 	 * Attach a class-based identifier to the element
@@ -23,14 +26,14 @@ interface IEditorUI {
 	identifyAs(identifier: string): this;
 
 	/**
-	 * Make the element editable by the user.
-	 */
-	editable(status?: boolean): this;
-
-	/**
 	 * Return the element specified in the settings.
 	 */
 	paint(): Element;
+
+	/**
+	 * Set the placeholder for the element.
+	 */
+	placeholder(status?: boolean): this;
 }
 
 export default IEditorUI;
