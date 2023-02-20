@@ -5,6 +5,11 @@ import IContent from '@contracts/outline/content';
  */
 interface IEditorUI {
 	/**
+	 * The DOM element where the editor will be attached.
+	 */
+	readonly element: Element;
+
+	/**
 	 * Attach the element to the editor's DOM.
 	 */
 	attach(content: IContent): this;
@@ -24,11 +29,6 @@ interface IEditorUI {
 	 * in order to select it on a later time.
 	 */
 	identifyAs(identifier: string): this;
-
-	/**
-	 * Return the element specified in the settings.
-	 */
-	paint(): Element;
 
 	/**
 	 * Set the placeholder for the element.
