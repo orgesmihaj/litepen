@@ -19,7 +19,7 @@ interface IContent {
 	/**
 	 * Add a piece of content to the editor's state.
 	 */
-	add(content: IContent): void;
+	add?(content: IContent): void;
 
 	/**
 	 * Define the content's DOM element.
