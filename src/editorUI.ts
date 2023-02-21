@@ -1,5 +1,6 @@
-import IEditorUI from '@contracts/editorUI';
 import IAccessibility from '@contracts/accessibility';
+import IContent from '@contracts/outline/content';
+import IEditorUI from '@contracts/editorUI';
 import { TBlueprint } from 'types/editorUI';
 import Messages from '@logger/messages';
 import Settings from '@/settings';
@@ -10,12 +11,15 @@ import '@assets/sass/objects/editor.scss';
  * Modify the DOM of the editor.
  */
 class EditorUI implements IEditorUI {
-	private readonly element = Settings.get('holder');
-
 	/**
 	 * Make DOM elements accessible to screen readers.
 	 */
 	private readonly accessibility: IAccessibility;
+
+	/**
+	 * The DOM element where the editor will be attached.
+	 */
+	readonly element: Element = Settings.get('holder');
 
 	/**
 	 * The singleton instance.
@@ -38,19 +42,34 @@ class EditorUI implements IEditorUI {
 
 	/**
 	 * Attach the element to the editor's DOM.
-	 *
-	 * @note: The trailing tag is necessary because without it, an empty
-	 * 				contenteditable element may not have a visual representation,
-	 * 				leading to difficulties in formatting and editing.
 	 */
-	attach(element: HTMLElement, trailingElement?: HTMLElement): this {
+	attach(content: IContent): this {
+		const element: HTMLElement = content.element();
+
 		if (!this.accessibility.hasSemanticMeaning(element)) {
 			throw new Error(Messages.NO_SEMANTIC_MEANING);
 		}
-		if (trailingElement) {
-			element.appendChild(trailingElement);
+
+		if (content.trailingElement !== undefined) {
+			element.appendChild(content.trailingElement());
 		}
+
 		this.element.appendChild(element);
+		return this;
+	}
+
+	/**
+	 * Build the editor's DOM.
+	 */
+	build(): void {
+		this.identifyAs('editor').editable().placeholder();
+	}
+
+	/**
+	 * Make the element editable by the user.
+	 */
+	editable(status: boolean = true): this {
+		this.element?.setAttribute('contenteditable', status.toString());
 		return this;
 	}
 
@@ -68,32 +87,17 @@ class EditorUI implements IEditorUI {
 	 */
 	placeholder(status: boolean = true): this {
 		if (!status) {
-			this.element.removeAttribute('placeholder');
+			this.element.removeAttribute('data-placeholder');
 			return this;
 		}
 
 		const placeholder =
-			Settings?.get('holder')?.getAttribute('placeholder') ||
+			Settings?.get('holder')?.getAttribute('data-placeholder') ||
 			Settings?.get('placeholder') ||
 			'';
 
-		this.element?.setAttribute('placeholder', placeholder);
+		this.element?.setAttribute('data-placeholder', placeholder);
 		return this;
-	}
-
-	/**
-	 * Make the element editable by the user.
-	 */
-	editable(status: boolean = true): this {
-		this.element?.setAttribute('contenteditable', status.toString());
-		return this;
-	}
-
-	/**
-	 * Return the element specified in the settings.
-	 */
-	paint(): Element {
-		return this.element;
 	}
 }
 
