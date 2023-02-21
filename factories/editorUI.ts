@@ -1,11 +1,11 @@
-import IFactory from '@contracts/factory';
 import IEditorUI from '@contracts/editorUI';
-import FKeyboard from '@factories/keyboard';
+import IFactory from '@contracts/factory';
 import FAccessibility from '@factories/accessability';
+import FKeyboard from '@factories/keyboard';
 import { TBlueprint } from 'types/editorUI';
 import EditorUI from '@/editorUI';
 
-class FEditorUI implements IFactory {
+class FEditorUI implements IFactory<IEditorUI> {
 	assemble(): IEditorUI {
 		const blueprint: TBlueprint = {
 			/**
