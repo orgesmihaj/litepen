@@ -12,12 +12,12 @@ interface IState {
 	/**
 	 * Return the content that has been written.
 	 */
-	structure: () => Map<string, IContent>;
+	structure(): Map<string, IContent>;
 
 	/**
 	 * Write the editor content to the state.
 	 */
-	write: (content: IContent) => void;
+	write(content: IContent): void;
 }
 
 export default IState;
