@@ -1,7 +1,10 @@
 import IEditorUI from '@contracts/editorUI';
-import IState from '@contracts/state';
 import IOutline from '@contracts/outline/outline';
+import IState from '@contracts/state';
 
+/**
+ * The dependencies of the editor.
+ */
 export type TBlueprint = {
 	/**
 	 * Modify the DOM of the editor.
