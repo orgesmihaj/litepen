@@ -1,4 +1,4 @@
-import IEditorUI from '@contracts/editorUI';
+import IDesigner from '@contracts/ui/designer';
 import IOutline from '@contracts/outline/outline';
 import IState from '@contracts/state';
 
@@ -9,7 +9,7 @@ export type TBlueprint = {
 	/**
 	 * Modify the DOM of the editor.
 	 */
-	editorUI: IEditorUI;
+	designer: IDesigner;
 
 	/**
 	 * Define the outline of the editor's content.
