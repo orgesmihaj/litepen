@@ -1,7 +1,14 @@
+import IContent from '@contracts/outline/content';
+
 /**
  * Modify the DOM of an element.
  */
 interface IDesigner {
+	/**
+	 * Add content as part of the Editor's DOM.
+	 */
+	add(content: IContent): HTMLElement;
+
 	/**
 	 * Make the element editable or not.
 	 */

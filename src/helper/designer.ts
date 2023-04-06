@@ -1,13 +1,15 @@
-import { TComposerAttributes } from 'types/editorUI';
+import { TComposerAttributes } from 'types/ui/designer';
 
 /**
  * EditorUI helper.
  */
-class HEditorUI {
+class HDesigner {
 	/**
 	 * Create a dummy composer for testing purposes.
 	 */
-	static dummyComposer(attributes: TComposerAttributes = []): void {
+	static createDummyComposer(
+		attributes: TComposerAttributes = []
+	): HTMLElement {
 		const composer: HTMLElement = document.createElement('div');
 		composer.classList.add('composer');
 
@@ -16,7 +18,8 @@ class HEditorUI {
 		});
 
 		document.body.appendChild(composer);
+		return composer;
 	}
 }
 
-export default HEditorUI;
+export default HDesigner;

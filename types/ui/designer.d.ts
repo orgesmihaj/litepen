@@ -1,8 +1,9 @@
-import IKeyboard from '@contracts/keyboard';
-import IAccessibility from '@contracts/accessibility';
+import IAccessibility from '@contracts/ui/accessibility';
+import IKeyboard from '@contracts/ui/keyboard';
+import ISelection from '@contracts/ui/selection';
 
 /**
- * Dependencies of the `EditorUI` instance. .
+ * The dependencies of the designer.
  */
 export type TBlueprint = {
 	/**
@@ -14,6 +15,11 @@ export type TBlueprint = {
 	 * Handle keyboard-related events.
 	 * */
 	keyboard: IKeyboard;
+
+	/**
+	 * Manage the selection of the editor's content.
+	 */
+	selection: ISelection;
 };
 
 /**
