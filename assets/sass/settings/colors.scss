@@ -2,9 +2,9 @@
 // COLORS
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-@import "./colors.light.scss";
-@import "./colors.dim.scss";
-@import "./colors.dark.scss";
+@import "colors.light";
+@import "colors.dim";
+@import "colors.dark";
 
 :root {
   color-scheme: light dark;

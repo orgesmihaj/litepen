@@ -1,12 +1,10 @@
 # Nope. (￣ｰ￣)ﾉ
 
 node_modules/
-build/
-dist/
 
 # CSS
-src/assets/sass/settings
-src/assets/sass/generic
+assets/sass/settings
+assets/sass/generic
 
 # IDEs and editors
 .idea
@@ -22,7 +20,7 @@ src/assets/sass/generic
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# OS generated files 
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*

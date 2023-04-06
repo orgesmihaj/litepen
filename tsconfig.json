@@ -3,7 +3,7 @@
 	"baseUrl": ".",
 	"paths": {
 	  "@/*": ["./src/*"],
-	  "@assets/*": ["./src/assets/*"],
+	  "@assets/*": ["./assets/*"],
 	  "@contracts/*": ["./contracts/*"],
 	  "@factories/*": ["./factories/*"],
 	  "@logger/*": ["./src/logger/*"],
