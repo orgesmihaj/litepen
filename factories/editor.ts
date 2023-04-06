@@ -1,4 +1,4 @@
-import FEditorUI from '@factories/editorUI';
+import FDesigner from '@factories/ui/designer';
 import FOutline from '@factories/outline/outline';
 import FState from '@factories/state';
 import IEditor from '@contracts/editor';
@@ -12,7 +12,7 @@ class FEditor implements IFactory<IEditor> {
 			/**
 			 * Modify the DOM of the editor.
 			 */
-			editorUI: new FEditorUI().assemble(),
+			designer: new FDesigner().assemble(),
 
 			/**
 			 * Define the outline of the editor's content.
