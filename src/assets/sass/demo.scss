@@ -3,6 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Inter', sans-serif;
 }
 
 [data-editor='editor'] {
@@ -13,7 +14,6 @@ body {
   padding: 20px;
   width: 100%;
   max-width: 600px;
-  height: 250px;
   overflow: auto;
 
   &:focus {
