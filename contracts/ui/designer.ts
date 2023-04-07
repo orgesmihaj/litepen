@@ -1,4 +1,5 @@
-import IContent from '@contracts/outline/content';
+import IContent from "@contracts/outline/content";
+import { TMutationCallback } from "types/ui/mutation";
 
 /**
  * Modify the DOM of an element.
@@ -7,7 +8,7 @@ interface IDesigner {
 	/**
 	 * Add content as part of the Editor's DOM.
 	 */
-	add(content: IContent): HTMLElement;
+	add(content: IContent): this;
 
 	/**
 	 * Make the element editable or not.
@@ -38,6 +39,11 @@ interface IDesigner {
 	 * Set the placeholder for the element.
 	 */
 	placeholder(message?: string | false | undefined): this;
+
+	/**
+	 * Capture any change in the editor's content.
+	 */
+	whenMutations(callback: TMutationCallback): this;
 }
 
 export default IDesigner;
