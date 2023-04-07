@@ -1,8 +1,15 @@
 import IFactory from '@contracts/factory';
-import IMutation from '@contracts/mutation';
-import Mutation from '@/mutation';
+import IMutation from '@contracts/ui/mutation';
+import Mutation from '@ui/mutation';
 
-class FMutation implements IFactory {
+/**
+ * Detect changes to the content and report them
+ * in an understandable format.
+ */
+class FMutation implements IFactory<IMutation> {
+	/**
+	 * Assemble a new Mutation instance.
+	 */
 	assemble(): IMutation {
 		return new Mutation();
 	}
