@@ -1,4 +1,4 @@
-import IAccessibility from '@contracts/accessibility';
+import IAccessibility from '@contracts/ui/accessibility';
 import Settings from '@/settings';
 import HAccessibility from '@/helper/accessability';
 
