@@ -1,12 +1,19 @@
-import IAccessibility from '@contracts/ui/accessibility';
-import Settings from '@/settings';
-import HAccessibility from '@/helper/accessability';
+import IAccessibility from "@contracts/ui/accessibility";
+import Settings from "@/settings";
+import HAccessibility from "@/helper/accessability";
 
 /**
  * Make DOM elements accessible to screen readers.
  * */
 class Accessibility implements IAccessibility {
 	private readonly element = Settings.get('holder');
+
+	/**
+	 * Check if the element has semantic meaning.
+	 */
+	hasSemanticMeaning(tag: HTMLElement): boolean {
+		return HAccessibility.hasARIA(tag) || HAccessibility.isSemanticTag(tag);
+	}
 
 	/**
 	 * Change the paragraph separator tag used when new
@@ -17,13 +24,6 @@ class Accessibility implements IAccessibility {
 
 		tag.appendChild(trailingLineBreak);
 		this.element.appendChild(tag);
-	}
-
-	/**
-	 * Check if the element has semantic meaning.
-	 */
-	hasSemanticMeaning(tag: HTMLElement): boolean {
-		return HAccessibility.hasARIA(tag) || HAccessibility.isSemanticTag(tag);
 	}
 }
 
