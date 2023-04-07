@@ -1,5 +1,5 @@
+import IKeyboard from '@contracts/ui/keyboard';
 import IListeners from '@contracts/listeners';
-import IKeyboard from '@contracts/keyboard';
 import { TListenerCallback } from 'types/listeners';
 
 /**
