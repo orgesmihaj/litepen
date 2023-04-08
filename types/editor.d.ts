@@ -1,9 +1,9 @@
-import IDesigner from '@contracts/ui/designer';
-import IOutline from '@contracts/outline/outline';
-import IState from '@contracts/state';
+import IDesigner from "@contracts/ui/designer";
+import IOutline from "@contracts/outline/outline";
+import IState from "@contracts/state";
 
 /**
- * The dependencies of the editor.
+ * The dependencies of the `Editor` instance.
  */
 export type TBlueprint = {
 	/**

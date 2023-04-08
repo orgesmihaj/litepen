@@ -3,7 +3,7 @@ import IKeyboard from "@contracts/ui/keyboard";
 import IMutation from "@contracts/ui/mutation";
 
 /**
- * The dependencies of the designer.
+ * The dependencies of the `Designer` instance.
  */
 export type TBlueprint = {
 	/**
