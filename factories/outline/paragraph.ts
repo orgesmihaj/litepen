@@ -1,6 +1,6 @@
-import IFactory from '@contracts/factory';
-import IContent from '@contracts/outline/content';
-import Paragraph from '@/outline/paragraph';
+import IContent from "@contracts/outline/content";
+import IFactory from "@contracts/factory";
+import Paragraph from "@/outline/paragraph";
 
 /**
  * Define a paragraph as part of the editor's
@@ -8,7 +8,7 @@ import Paragraph from '@/outline/paragraph';
  */
 class FParagraph implements IFactory<IContent> {
 	/**
-	 * Instantiate a new paragraph.
+	 * Assemble a new `Paragraph` instance.
 	 */
 	assemble(): IContent {
 		return new Paragraph();

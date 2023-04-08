@@ -1,13 +1,13 @@
-import Factory from '@contracts/factory';
-import IAccessibility from '@contracts/accessibility';
-import Accessibility from '@/accessibility';
+import IAccessibility from "@contracts/ui/accessibility";
+import Factory from "@contracts/factory";
+import Accessibility from "@ui/accessibility";
 
 /**
  * Make DOM elements accessible to screen readers.
- * */
+ */
 class FAccessibility implements Factory<IAccessibility> {
 	/**
-	 * Instantiate a new accessibility object.
+	 * Assemble a new `Accessibility` instance.
 	 */
 	assemble(): IAccessibility {
 		return new Accessibility();

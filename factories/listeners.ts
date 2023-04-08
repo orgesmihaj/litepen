@@ -1,8 +1,14 @@
-import IFactory from '@contracts/factory';
-import IListeners from '@contracts/listeners';
-import Listeners from '@/listeners';
+import IFactory from "@contracts/factory";
+import IListeners from "@contracts/listeners";
+import Listeners from "@/listeners";
 
-class FListeners implements IFactory {
+/**
+ * A subscription mechanism to the editor's events.
+ * */
+class FListeners implements IFactory<IListeners> {
+	/**
+	 * Assemble a new `Listeners` instance.
+	 */
 	assemble(): IListeners {
 		return Listeners.getInstance();
 	}

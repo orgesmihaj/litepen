@@ -1,12 +1,16 @@
+import IEditor from '@contracts/editor';
+import IFactory from '@contracts/factory';
 import FDesigner from '@factories/ui/designer';
 import FOutline from '@factories/outline/outline';
 import FState from '@factories/state';
-import IEditor from '@contracts/editor';
-import IFactory from '@contracts/factory';
+
 import { TBlueprint } from 'types/editor';
 import Editor from '@/editor';
 
 class FEditor implements IFactory<IEditor> {
+	/**
+	 * Assemble a new `Editor` instance.
+	 */
 	assemble(): IEditor {
 		const blueprint: TBlueprint = {
 			/**

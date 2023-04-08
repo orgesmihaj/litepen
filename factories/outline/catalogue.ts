@@ -1,6 +1,6 @@
-import ICatalogue from '@contracts/outline/catalogue';
-import IFactory from '@contracts/factory';
-import Catalogue from '@/outline/catalogue';
+import ICatalogue from "@contracts/outline/catalogue";
+import IFactory from "@contracts/factory";
+import Catalogue from "@/outline/catalogue";
 
 /**
  * Define content that can be part of the
@@ -8,7 +8,7 @@ import Catalogue from '@/outline/catalogue';
  */
 class FCatalogue implements IFactory<ICatalogue> {
 	/**
-	 * Instantiate a new catalogue.
+	 * Assemble a new `Catalogue` instance.
 	 */
 	assemble(): ICatalogue {
 		return new Catalogue();

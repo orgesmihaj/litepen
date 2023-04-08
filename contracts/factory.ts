@@ -1,11 +1,11 @@
 /**
  * Assemble a new instance of a given type.
  */
-interface IFactory<TEditorInstance> {
+interface IFactory<TComponent> {
 	/**
 	 * Assemble a new instance.
 	 */
-	assemble(): TEditorInstance;
+	assemble(): TComponent;
 }
 
 export default IFactory;
