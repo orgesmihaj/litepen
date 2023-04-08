@@ -1,6 +1,6 @@
-import IAccessibility from '@contracts/ui/accessibility';
-import IKeyboard from '@contracts/ui/keyboard';
-import ISelection from '@contracts/ui/selection';
+import IAccessibility from "@contracts/ui/accessibility";
+import IKeyboard from "@contracts/ui/keyboard";
+import IMutation from "@contracts/ui/mutation";
 
 /**
  * The dependencies of the designer.
@@ -17,9 +17,9 @@ export type TBlueprint = {
 	keyboard: IKeyboard;
 
 	/**
-	 * Manage the selection of the editor's content.
+	 * Detect changes made to the element.
 	 */
-	selection: ISelection;
+	mutation: IMutation;
 };
 
 /**

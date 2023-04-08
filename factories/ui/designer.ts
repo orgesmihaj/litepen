@@ -4,7 +4,6 @@ import FAccessibility from '@factories/accessability';
 import FKeyboard from '@factories/keyboard';
 import { TBlueprint } from 'types/ui/designer';
 import Designer from '@ui/designer';
-import FSelection from '@factories/selection';
 import FMutation from '@factories/mutation';
 
 class FDesigner implements IFactory<IDesigner> {
@@ -19,11 +18,6 @@ class FDesigner implements IFactory<IDesigner> {
 			 * Handle keyboard-related events.
 			 */
 			keyboard: new FKeyboard().assemble(),
-
-			/**
-			 * Manage the selection of the editor's content.
-			 */
-			selection: new FSelection().assemble(),
 
 			/**
 			 * Detect changes made to the element.
