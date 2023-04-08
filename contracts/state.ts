@@ -1,4 +1,4 @@
-import IContent from '@contracts/outline/content';
+import IContent from "@contracts/outline/content";
 
 /**
  * Manage the state of the editor.
@@ -9,6 +9,11 @@ interface IState {
 	 */
 	has(content: IContent): boolean;
 
+	/**
+	 * Check whether the state is empty.
+	 */
+	isEmpty(): boolean;
+	
 	/**
 	 * Return the content that has been written.
 	 */

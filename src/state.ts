@@ -18,6 +18,13 @@ class State implements IState {
 	}
 
 	/**
+	 * Check whether the state is empty.
+	 */
+	isEmpty(): boolean {
+		return this.state.size === 0;
+	}
+
+	/**
 	 * Return the content that has been written.
 	 */
 	structure(): Map<string, IContent> {
