@@ -1,7 +1,7 @@
-import ICatalogue from '@contracts/outline/catalogue';
-import IContent from '@contracts/outline/content';
-import IState from '@contracts/state';
-import { TBlueprint } from 'types/state';
+import ICatalogue from "@contracts/outline/catalogue";
+import IContent from "@contracts/outline/content";
+import IState from "@contracts/state";
+import { TBlueprint } from "types/state";
 
 /**
  * Manage the state of the editor.
@@ -32,9 +32,6 @@ class State implements IState {
 	 * Return the content that has been written.
 	 */
 	structure(): Map<string, IContent> {
-		if (this.state.size === 0) {
-			this.write(this.catalogue.pick('paragraph'));
-		}
 		return this.state;
 	}
 
