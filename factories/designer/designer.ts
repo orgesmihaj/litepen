@@ -3,7 +3,7 @@ import IFactory from "@contracts/factory";
 import FAccessibility from "@factories/designer/accessibility";
 import FKeyboard from "@factories/designer/keyboard";
 import FMutation from "@factories/designer/mutation";
-import { TBlueprint } from "types/ui/designer";
+import { TBlueprint } from "types/designer/designer";
 import Designer from "@ui/designer";
 
 /**
