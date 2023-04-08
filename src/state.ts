@@ -1,25 +1,14 @@
-import ICatalogue from "@contracts/outline/catalogue";
 import IContent from "@contracts/outline/content";
 import IState from "@contracts/state";
-import { TBlueprint } from "types/state";
 
 /**
  * Manage the state of the editor.
  */
 class State implements IState {
 	/**
-	 * Define content that can be part of the editor's outline.
-	 */
-	private readonly catalogue: ICatalogue;
-
-	/**
 	 * The content that has been written to the state.
 	 */
 	private state: Map<string, IContent> = new Map();
-
-	constructor(blueprint: TBlueprint) {
-		this.catalogue = blueprint.catalogue;
-	}
 
 	/**
 	 * Check whether the state contains the content.
