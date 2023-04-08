@@ -1,4 +1,4 @@
-import { TContentCatalogue } from 'types/catalogue';
+import { TContentCatalogue } from "types/catalogue";
 
 /**
  * Operations that are common to both simple
@@ -11,8 +11,8 @@ interface IContent {
 	readonly id: string;
 
 	/**
-	 * Type of the content. This is used to identify the
-	 * content when it is added to the outline.
+	 * Type of the content as defined in the
+	 * content catalogue.
 	 */
 	readonly type: keyof TContentCatalogue;
 
@@ -38,18 +38,18 @@ interface IContent {
 	isComposite(): boolean;
 
 	/**
-	 * Retrieve the content's structure.
-	 */
-	structure(): IContent[];
-
-	/**
 	 * Add a trailing element to the content.
 	 *
-	 * @note: The trailing element is necessary because without it, an empty
-	 * 				contenteditable element may not have a visual representation,
-	 * 				leading to difficulties in formatting and editing.
+	 * @note The trailing element is necessary because without it, an empty
+	 * 			 contenteditable element may not have a visual representation,
+	 * 			 leading to difficulties in formatting and editing.
 	 */
 	trailingElement?(): HTMLElement;
+
+	/**
+	 * Update the content.
+	 */
+	update(mutations: MutationRecord[]): void;
 }
 
 export default IContent;

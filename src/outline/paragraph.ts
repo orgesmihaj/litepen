@@ -1,11 +1,14 @@
-import IContent from '@contracts/outline/content';
-import { TContentCatalogue } from 'types/catalogue';
-import Content from '@/outline/content';
+import { TContentCatalogue } from "types/catalogue";
+import Content from "@/outline/content";
 
 /**
  * Define a paragraph as part of the editor's content.
  */
 class Paragraph extends Content {
+	protected content = {
+		text: '',
+	};
+
 	/**
 	 * Type of the content. This is used to identify the
 	 * content when it is added to the outline.
@@ -20,17 +23,21 @@ class Paragraph extends Content {
 	}
 
 	/**
-	 * Retrieve the content's structure.
-	 */
-	structure(): IContent[] {
-		return [];
-	}
-
-	/**
 	 * Add a trailing element to the content.
 	 */
 	trailingElement(): HTMLElement {
 		return document.createElement('br');
+	}
+
+	/**
+	 * Update the content.
+	 */
+	update(mutations: MutationRecord[]): void {
+		mutations.forEach(mutation => {
+			if (mutation.type === 'characterData') {
+				this.content.text = mutation.target.textContent ?? '';
+			}
+		});
 	}
 }
 

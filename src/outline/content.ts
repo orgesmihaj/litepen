@@ -1,6 +1,6 @@
-import IContent from '@contracts/outline/content';
-import { TContentCatalogue } from 'types/catalogue';
-import HContent from '@/helper/content';
+import IContent from "@contracts/outline/content";
+import { TContentCatalogue } from "types/catalogue";
+import HContent from "@/helper/content";
 
 /**
  * Operations that are common to both simple and complex
@@ -8,13 +8,23 @@ import HContent from '@/helper/content';
  */
 abstract class Content implements IContent {
 	/**
+	 * The content written in the editor.
+	 */
+	protected abstract content: unknown;
+
+	/**
 	 * Unique identifier of the content.
 	 */
 	readonly id: string = HContent.uniqueIdentifier();
 
 	/**
-	 * Type of the content. This is used to identify the
-	 * content when it is added to the outline.
+	 * A composite of one or more pieces of content.
+	 */
+	protected structure: IContent[] = [];
+
+	/**
+	 * Type of the content as defined in the
+	 * content catalogue.
 	 */
 	readonly type: keyof TContentCatalogue = 'paragraph';
 
@@ -33,11 +43,9 @@ abstract class Content implements IContent {
 	}
 
 	/**
-	 * Retrieve the content's structure.
+	 * Update the content.
 	 */
-	structure(): IContent[] {
-		return [];
-	}
+	abstract update(mutations: MutationRecord[]): void;
 }
 
 export default Content;
