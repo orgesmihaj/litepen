@@ -1,12 +1,12 @@
-import FAccessibility from '@factories/accessability';
-import FCatalogue from '@factories/outline/catalogue';
-import FDesigner from '@factories/ui/designer';
-import FMutation from '@factories/mutation';
-import IFactory from '@contracts/factory';
-import IOutline from '@contracts/outline/outline';
-import { TBlueprint } from 'types/outline';
-import Outline from '@/outline/outline';
-import FKeyboard from '@factories/keyboard';
+import IFactory from "@contracts/factory";
+import IOutline from "@contracts/outline/outline";
+import FAccessibility from "@factories/designer/accessibility";
+import FCatalogue from "@factories/outline/catalogue";
+import FDesigner from "@factories/designer/designer";
+import FKeyboard from "@factories/designer/keyboard";
+import FMutation from "@factories/designer/mutation";
+import { TBlueprint } from "types/outline";
+import Outline from "@/outline/outline";
 
 /**
  * Define the outline of the editor's content.

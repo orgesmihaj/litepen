@@ -1,8 +1,8 @@
 import IDesigner from "@contracts/ui/designer";
 import IFactory from "@contracts/factory";
-import FAccessibility from "@factories/accessability";
-import FKeyboard from "@factories/keyboard";
-import FMutation from "@factories/mutation";
+import FAccessibility from "@factories/designer/accessibility";
+import FKeyboard from "@factories/designer/keyboard";
+import FMutation from "@factories/designer/mutation";
 import { TBlueprint } from "types/ui/designer";
 import Designer from "@ui/designer";
 
