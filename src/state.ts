@@ -11,6 +11,13 @@ class State implements IState {
 	private state: Map<string, IContent> = new Map();
 
 	/**
+	 * Remove the content from the state.
+	 */
+	delete(content: IContent): void {
+		this.state.delete(content.id);
+	}
+
+	/**
 	 * Check whether the state contains the content.
 	 */
 	has(content: IContent): boolean {

@@ -5,6 +5,11 @@ import IContent from "@contracts/outline/content";
  */
 interface IState {
 	/**
+	 * Remove the content from the state.
+	 */
+	delete(content: IContent): void;
+	
+	/**
 	 * Check whether the state contains the content.
 	 */
 	has(content: IContent): boolean;
@@ -13,7 +18,7 @@ interface IState {
 	 * Check whether the state is empty.
 	 */
 	isEmpty(): boolean;
-	
+
 	/**
 	 * Return the content that has been written.
 	 */
