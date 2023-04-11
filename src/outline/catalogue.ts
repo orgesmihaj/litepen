@@ -1,7 +1,7 @@
-import ICatalogue from '@contracts/outline/catalogue';
-import IContent from '@contracts/outline/content';
-import FParagraph from '@factories/outline/paragraph';
-import { TContentCatalogue } from 'types/catalogue';
+import ICatalogue from "@contracts/outline/catalogue";
+import IContent from "@contracts/outline/content";
+import FParagraph from "@factories/outline/paragraph";
+import { TContentCatalogue } from "types/catalogue";
 
 /**
  * Define content that can be part of the
@@ -18,10 +18,8 @@ class Catalogue implements ICatalogue {
 	/**
 	 * Pick a new piece of content from the catalogue.
 	 */
-	pick<ContentType extends keyof TContentCatalogue>(
-		contentType: ContentType
-	): IContent {
-		return this.catalogue[contentType].assemble();
+	pick<Category extends keyof TContentCatalogue>(category: Category): IContent {
+		return this.catalogue[category].assemble();
 	}
 }
 
