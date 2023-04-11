@@ -1,5 +1,5 @@
 import IContent from "@contracts/outline/content";
-import { TMutationCallback } from "types/ui/mutation";
+import { TMutationCallback } from "types/designer/mutation";
 
 /**
  * Modify the DOM of an element.
@@ -8,7 +8,7 @@ interface IDesigner {
 	/**
 	 * Add content as part of the Editor's DOM.
 	 */
-	add(content: IContent): this;
+	create(content: IContent): this;
 
 	/**
 	 * Make the element editable or not.

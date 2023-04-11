@@ -2,9 +2,9 @@ import IAccessibility from "@contracts/ui/accessibility";
 import IContent from "@contracts/outline/content";
 import IDesigner from "@contracts/ui/designer";
 import IMutation from "@contracts/ui/mutation";
-import { TBlueprint } from "types/ui/designer";
+import { TBlueprint } from "types/designer/designer";
+import { TMutationCallback } from "types/designer/mutation";
 import Messages from "@logger/messages";
-import { TMutationCallback } from "types/ui/mutation";
 import Settings from "@/settings";
 
 /**
@@ -32,9 +32,9 @@ class Designer implements IDesigner {
 	}
 
 	/**
-	 * Add content as part of the Editor's DOM.
+	 * Create a DOM element to represent the content.
 	 */
-	add(content: IContent): this {
+	create(content: IContent): this {
 		const element: HTMLElement = content.element();
 
 		if (!this.accessibility.hasSemanticMeaning(element)) {
