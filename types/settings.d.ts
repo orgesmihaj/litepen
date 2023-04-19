@@ -1,5 +1,3 @@
-import { TState } from "types/state";
-
 export type TSettings = {
 	/**
 	 * Set the caret to the end of the editor's content.
