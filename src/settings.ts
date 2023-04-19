@@ -5,6 +5,14 @@ import Messages from '@logger/messages';
  * Manage the settings of the editor.
  */
 class Settings {
+	/**
+	 * A singleton instance of the Settings class.
+	 */
+	private static instance: Settings;
+
+	/**
+	 * The default settings of the editor.
+	 */
 	private static settings: TSettings = Object.seal({
 		autofocus: true,
 		content: {},
@@ -12,27 +20,15 @@ class Settings {
 		editable: true,
 		extensions: [],
 		holder: document.createElement('div'),
+		onUpdate: () => {},
 		placeholder: '',
 	});
-
-	private static instance: Settings;
 
 	private constructor(settings: TSettings) {
 		if (settings?.holder === null) {
 			throw new Error(Messages.HOLDER_IS_MISSING);
 		}
 		Settings.overriddenBy(settings);
-	}
-
-	/**
-	 * Create a new instance of the Settings class
-	 * or return the existing one. This is a singleton.
-	 */
-	static use(settings: TSettings): Settings {
-		if (!Settings.instance) {
-			Settings.instance = new Settings(settings ?? this.settings);
-		}
-		return Settings.instance;
 	}
 
 	/**
@@ -52,6 +48,16 @@ class Settings {
 	}
 
 	/**
+	 * Override the default settings by the given ones.
+	 */
+	static overriddenBy(settings: TSettings): TSettings {
+		(Object.keys(settings) as Array<keyof TSettings>).map(setting =>
+			Settings.set(setting, settings[setting])
+		);
+		return Settings.all();
+	}
+
+	/**
 	 * Set a given configuration value.
 	 */
 	static set<Setting extends keyof TSettings>(
@@ -65,13 +71,13 @@ class Settings {
 	}
 
 	/**
-	 * Override the default settings by the given ones.
+	 * Create a singleton instance of the Settings class.
 	 */
-	static overriddenBy(settings: TSettings): TSettings {
-		(Object.keys(settings) as Array<keyof TSettings>).map(setting =>
-			Settings.set(setting, settings[setting])
-		);
-		return Settings.all();
+	static use(settings: TSettings): Settings {
+		if (!Settings.instance) {
+			Settings.instance = new Settings(settings ?? this.settings);
+		}
+		return Settings.instance;
 	}
 }
 

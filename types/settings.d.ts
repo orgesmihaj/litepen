@@ -1,16 +1,18 @@
+import { TState } from "types/state";
+
 export type TSettings = {
 	/**
-	 * Set a Caret to the Editor after initialization.
+	 * Set the caret to the end of the editor's content.
 	 */
 	autofocus?: boolean;
 
 	/**
-	 * Editor's content as an object or DOM element.
+	 * The content written in the editor.
 	 */
 	content?: Object | HTMLElement;
 
 	/**
-	 * The time needed by the editor to wait for the user to stop typing.
+	 * The waiting time before the user's input is processed.
 	 */
 	debounce?: number;
 
@@ -28,6 +30,11 @@ export type TSettings = {
 	 * Bind the Editor to a specific HTML element or selector.
 	 */
 	holder: Element;
+
+	/**
+	 * Set a callback to be executed when the State is updated.
+	 */
+	onUpdate?: () => void;
 
 	/*
 	 * Set a placeholder to the Editor.
