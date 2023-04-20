@@ -1,5 +1,7 @@
-import IContent from "@contracts/outline/content";
-import IState from "@contracts/state";
+import IContent from '@contracts/outline/content';
+import IState from '@contracts/state';
+import IStateSubscriber from "@contracts/state/StateSubscriber";
+import { TState } from "types/state";
 
 /**
  * Manage the state of the editor.
@@ -8,7 +10,12 @@ class State implements IState {
 	/**
 	 * The content that has been written to the state.
 	 */
-	private state: Map<string, IContent> = new Map();
+	private state: TState = new Map();
+
+	/**
+	 * The subscribers that are listening to the state.
+	 */
+	private subscribers: Set<IStateSubscriber> = new Set();
 
 	/**
 	 * Remove the content from the state.
@@ -34,8 +41,24 @@ class State implements IState {
 	/**
 	 * Return the content that has been written.
 	 */
-	structure(): Map<string, IContent> {
+	structure(): TState {
 		return this.state;
+	}
+
+	/**
+	 * Subscribe to the state.
+	 */
+	subscribe(subscriber: IStateSubscriber): IStateSubscriber {
+		this.subscribers.add(subscriber);
+
+		return subscriber;
+	}
+
+	/**
+	 * Unsubscribe from the state.
+	 */
+	unsubscribe(subscriber: IStateSubscriber): void {
+		this.subscribers.delete(subscriber);
 	}
 
 	/**
@@ -43,6 +66,10 @@ class State implements IState {
 	 */
 	write(content: IContent): void {
 		this.state.set(content.id, content);
+
+		this.subscribers.forEach((subscriber: IStateSubscriber) => {
+			subscriber.onUpdate(this.state);
+		});
 	}
 }
 
