@@ -1,7 +1,7 @@
-import IMutation from "@contracts/ui/mutation";
-import { TMutationCallback, TMutationDebounce } from "types/ui/mutation";
-import Messages from "@logger/messages";
-import Settings from "../settings";
+import IMutation from '@contracts/ui/mutation';
+import { TMutationCallback, TMutationDebounce } from 'types/designer/mutation';
+import Messages from '@logger/messages';
+import Settings from '../settings';
 
 /**
  * Detect changes made to the element.
@@ -61,6 +61,7 @@ class Mutation implements IMutation {
 	 */
 	on(element: HTMLElement): this {
 		this.element = element;
+
 		return this;
 	}
 }
