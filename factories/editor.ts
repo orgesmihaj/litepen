@@ -3,7 +3,6 @@ import IFactory from '@contracts/factory';
 import FDesigner from '@factories/designer/designer';
 import FOutline from '@factories/outline/outline';
 import FState from '@factories/state';
-
 import { TBlueprint } from 'types/editor';
 import Editor from '@/editor';
 
