@@ -1,7 +1,7 @@
-import { TComposerAttributes } from 'types/ui/designer';
+import { TComposerAttributes } from 'types/designer/designer';
 
 /**
- * EditorUI helper.
+ * Designer helper.
  */
 class HDesigner {
 	/**
