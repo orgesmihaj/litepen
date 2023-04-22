@@ -1,25 +1,20 @@
 # EditorConfig
-# ➡️ Define formatting conventions for textual files in the project.
+# • Define formatting conventions for textual files in the project.
 
 root = true
-charset = utf-8
-
-# ━━━
 
 [*]
 indent_style = tab
-
-# Tab size
-[*.{js, ts}]
-indent_size = 2
-[*.{html, css}]
-indent_size = 4
-
-[*]
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-max_line_length = off
+max_line_length = 100
+
+[*.{js,ts}]
+indent_size = 2
+
+[*.{html,css}]
+indent_size = 4
 
 [*.md]
 trim_trailing_whitespace = false
