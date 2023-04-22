@@ -1,4 +1,4 @@
-import { TMutationCallback } from "types/ui/mutation";
+import { TMutationCallback } from "types/designer/mutation";
 
 /**
  * Detect changes made to the element.
