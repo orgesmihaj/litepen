@@ -1,6 +1,8 @@
-import IAccessibility from "@contracts/ui/accessibility";
-import IKeyboard from "@contracts/ui/keyboard";
-import IMutation from "@contracts/ui/mutation";
+import IAccessibility from '@contracts/ui/accessibility';
+import ICaret from '@contracts/ui/caret';
+import IKeyboard from '@contracts/ui/keyboard';
+import IListeners from '@contracts/listeners';
+import IMutation from '@contracts/ui/mutation';
 
 /**
  * The dependencies of the `Designer` instance.
@@ -8,13 +10,23 @@ import IMutation from "@contracts/ui/mutation";
 export type TBlueprint = {
 	/**
 	 * Make DOM elements accessible to screen readers.
-	 * */
+	 */
 	accessibility: IAccessibility;
 
 	/**
+	 * Manage the caret position in the editor.
+	 */
+	caret: ICaret;
+
+	/**
 	 * Handle keyboard-related events.
-	 * */
+	 */
 	keyboard: IKeyboard;
+
+	/**
+	 * A subscription mechanism to the editor's events.
+	 */
+	listeners: IListeners;
 
 	/**
 	 * Detect changes made to the element.
