@@ -1,6 +1,6 @@
 /**
  * Make DOM elements accessible to screen readers.
- * */
+ */
 interface IAccessibility {
 	/**
 	 * Check if the element has semantic meaning.
