@@ -5,7 +5,7 @@ interface IFactory<TComponent> {
 	/**
 	 * Assemble a new instance.
 	 */
-	assemble(): TComponent;
+	assemble(blueprint?: any): TComponent;
 }
 
 export default IFactory;
