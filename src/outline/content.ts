@@ -27,7 +27,7 @@ abstract class Content implements IContent {
 	 * content catalogue.
 	 */
 	readonly type: keyof TContentCatalogue = 'paragraph';
-	
+
 	/*
 	 * Retrieve the DOM element that represents
 	 * the content.

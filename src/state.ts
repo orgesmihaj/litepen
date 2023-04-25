@@ -1,7 +1,7 @@
 import IContent from '@contracts/outline/content';
 import IState from '@contracts/state';
-import IStateSubscriber from "@contracts/state/StateSubscriber";
-import { TState } from "types/state";
+import IStateSubscriber from '@contracts/state/StateSubscriber';
+import { TState } from 'types/state';
 
 /**
  * Manage the state of the editor.
