@@ -1,11 +1,12 @@
-import { TContentCatalogue } from "types/catalogue";
-import Content from "@/outline/content";
+import { TContentCatalogue } from 'types/catalogue';
+import { TParagraph } from 'types/content';
+import Content from '@/outline/content';
 
 /**
  * Define a paragraph as part of the editor's content.
  */
 class Paragraph extends Content {
-	protected content = {
+	protected content: TParagraph = {
 		text: '',
 	};
 
