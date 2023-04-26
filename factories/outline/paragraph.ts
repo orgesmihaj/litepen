@@ -1,6 +1,7 @@
-import IContent from "@contracts/outline/content";
-import IFactory from "@contracts/factory";
-import Paragraph from "@/outline/paragraph";
+import IContent from '@contracts/outline/content';
+import IFactory from '@contracts/factory';
+import { TBlueprint } from 'types/content';
+import Paragraph from '@/outline/paragraph';
 
 /**
  * Define a paragraph as part of the editor's
@@ -10,8 +11,8 @@ class FParagraph implements IFactory<IContent> {
 	/**
 	 * Assemble a new `Paragraph` instance.
 	 */
-	assemble(): IContent {
-		return new Paragraph();
+	assemble(blueprint?: TBlueprint): IContent {
+		return new Paragraph(blueprint);
 	}
 }
 
