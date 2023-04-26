@@ -1,4 +1,5 @@
 import IContent from '@contracts/outline/content';
+import { TBlueprint, TContent, TContentConstructor } from 'types/content';
 import { TContentCatalogue } from 'types/catalogue';
 import HContent from '@/helper/content';
 
@@ -10,7 +11,7 @@ abstract class Content implements IContent {
 	/**
 	 * The content written in the editor.
 	 */
-	protected abstract content: unknown;
+	protected content: TContent = {};
 
 	/**
 	 * Unique identifier of the content.
@@ -27,6 +28,20 @@ abstract class Content implements IContent {
 	 * content catalogue.
 	 */
 	readonly type: keyof TContentCatalogue = 'paragraph';
+
+	constructor(blueprint?: TBlueprint) {
+		this.content = blueprint?.content ?? this.content;
+	}
+
+	/**
+	 * Return a copy of the content.
+	 */
+	copy(): IContent {
+		const blueprint: TBlueprint = {
+			content: this.content,
+		};
+		return new (this.constructor as TContentConstructor)(blueprint);
+	}
 
 	/*
 	 * Retrieve the DOM element that represents

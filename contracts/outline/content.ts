@@ -22,6 +22,11 @@ interface IContent {
 	add?(content: IContent): void;
 
 	/**
+	 * Return a copy of the content.
+	 */
+	copy(): IContent;
+
+	/**
 	 * Define the content's DOM element.
 	 */
 	element(): HTMLElement;
