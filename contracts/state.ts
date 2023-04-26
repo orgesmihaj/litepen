@@ -1,5 +1,6 @@
-import IContent from "@contracts/outline/content";
-import IStateSubscriber from "@contracts/state/StateSubscriber";
+import IContent from '@contracts/outline/content';
+import IStateSubscriber from '@contracts/state/StateSubscriber';
+import { TState } from 'types/state';
 
 /**
  * Manage the state of the editor.
@@ -9,7 +10,7 @@ interface IState {
 	 * Remove the content from the state.
 	 */
 	delete(content: IContent): void;
-	
+
 	/**
 	 * Check whether the state contains the content.
 	 */
@@ -23,7 +24,7 @@ interface IState {
 	/**
 	 * Return the content that has been written.
 	 */
-	structure(): Map<string, IContent>;
+	structure(): TState;
 
 	/**
 	 * Subscribe to the state.
