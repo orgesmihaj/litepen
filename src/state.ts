@@ -65,7 +65,7 @@ class State implements IState {
 	 * Write a piece of content to the state.
 	 */
 	write(content: IContent): void {
-		this.state.set(content.id, content);
+		this.state.set(content.id, content.copy());
 
 		this.subscribers.forEach((subscriber: IStateSubscriber) => {
 			subscriber.onUpdate(this.state);
