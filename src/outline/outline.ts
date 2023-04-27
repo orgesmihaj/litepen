@@ -1,0 +1,74 @@
+import ICaret from '@contracts/ui/caret';
+import ICatalogue from '@contracts/outline/catalogue';
+import IContent from '@contracts/outline/content';
+import IDesigner from '@contracts/ui/designer';
+import IOutline from '@contracts/outline/outline';
+import IState from '@contracts/state';
+import { TBlueprint } from 'types/outline';
+
+/**
+ * Define the outline of the editor's content.
+ */
+class Outline implements IOutline {
+	/**
+	 * Manage the caret position in the editor.
+	 */
+	private readonly caret: ICaret;
+
+	/**
+	 * Define content that can be part of the
+	 * editor's outline.
+	 */
+	private readonly catalogue: ICatalogue;
+
+	/**
+	 * Modify the DOM of the editor.
+	 */
+	private readonly designer: IDesigner;
+
+	/**
+	 * Manage the state of the editor.
+	 */
+	private state: IState | undefined;
+
+	constructor(blueprint: TBlueprint) {
+		this.caret = blueprint.caret;
+		this.catalogue = blueprint.catalogue;
+		this.designer = blueprint.designer;
+	}
+
+	/**
+	 * Compose the outline from the state.
+	 */
+	compose(state: IState): void {
+		this.state = state;
+
+		if (this.state.isEmpty()) {
+			const paragraph: IContent = this.catalogue.pick('paragraph');
+
+			this.state.write(paragraph);
+			this.define(paragraph);
+			return;
+		}
+
+		this.state.structure().forEach((content: IContent): void => {
+			this.define(content);
+		});
+	}
+
+	/**
+	 * Define a new piece of content and attach the listeners.
+	 */
+	define(content: IContent): void {
+		const element: HTMLElement = this.designer.create(content);
+
+		this.designer.on(element).onChange(mutations => {
+			content.update(mutations);
+			this.state?.write(content);
+		});
+
+		this.caret.moveTo(element);
+	}
+}
+
+export default Outline;
