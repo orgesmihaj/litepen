@@ -1,4 +1,3 @@
-import ICaret from '@contracts/ui/caret';
 import ICatalogue from '@contracts/outline/catalogue';
 import IContent from '@contracts/outline/content';
 import IDesigner from '@contracts/ui/designer';
@@ -10,11 +9,6 @@ import { TBlueprint } from 'types/outline';
  * Define the outline of the editor's content.
  */
 class Outline implements IOutline {
-	/**
-	 * Manage the caret position in the editor.
-	 */
-	private readonly caret: ICaret;
-
 	/**
 	 * Define content that can be part of the
 	 * editor's outline.
@@ -32,7 +26,6 @@ class Outline implements IOutline {
 	private state: IState | undefined;
 
 	constructor(blueprint: TBlueprint) {
-		this.caret = blueprint.caret;
 		this.catalogue = blueprint.catalogue;
 		this.designer = blueprint.designer;
 	}
@@ -66,8 +59,6 @@ class Outline implements IOutline {
 			content.update(mutations);
 			this.state?.write(content);
 		});
-
-		this.caret.moveTo(element);
 	}
 }
 
