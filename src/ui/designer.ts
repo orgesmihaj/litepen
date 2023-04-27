@@ -1,11 +1,11 @@
-import IAccessibility from "@contracts/ui/accessibility";
-import IContent from "@contracts/outline/content";
-import IDesigner from "@contracts/ui/designer";
-import IMutation from "@contracts/ui/mutation";
-import { TBlueprint } from "types/designer/designer";
-import { TMutationCallback } from "types/designer/mutation";
-import Messages from "@logger/messages";
-import Settings from "@/settings";
+import IAccessibility from '@contracts/ui/accessibility';
+import IContent from '@contracts/outline/content';
+import IDesigner from '@contracts/ui/designer';
+import IMutation from '@contracts/ui/mutation';
+import { TBlueprint } from 'types/designer/designer';
+import { TMutationCallback } from 'types/designer/mutation';
+import Messages from '@logger/messages';
+import Settings from '@/settings';
 
 /**
  * Modify the DOM of an element.
@@ -19,7 +19,7 @@ class Designer implements IDesigner {
 	/**
 	 * The DOM element to modify.
 	 */
-	private element: Element = Settings.get('holder');
+	private element: Element | HTMLElement = Settings.get('holder');
 
 	/**
 	 * Detect changes made to the element.
@@ -34,7 +34,7 @@ class Designer implements IDesigner {
 	/**
 	 * Create a DOM element to represent the content.
 	 */
-	create(content: IContent): this {
+	create(content: IContent): HTMLElement {
 		const element: HTMLElement = content.element();
 
 		if (!this.accessibility.hasSemanticMeaning(element)) {
@@ -47,7 +47,7 @@ class Designer implements IDesigner {
 
 		this.element.appendChild(element);
 
-		return this;
+		return element;
 	}
 
 	/**
@@ -70,7 +70,7 @@ class Designer implements IDesigner {
 	 * Attach a `data-*` attribute to the element.
 	 */
 	identifyAs(name: string): this {
-		this.element.setAttribute(`data-${name}`, name);
+		this.element.setAttribute(`data-editor`, name);
 
 		return this;
 	}
@@ -92,6 +92,19 @@ class Designer implements IDesigner {
 	}
 
 	/**
+	 * Capture any change in the editor's content.
+	 */
+	onChange(callback: TMutationCallback): this {
+		this.mutation
+			.on(this.element)
+			.capture((mutations: MutationRecord[]): void => {
+				callback(mutations);
+			});
+
+		return this;
+	}
+
+	/**
 	 * Set the placeholder for the element.
 	 */
 	placeholder(message: string | false | undefined): this {
@@ -100,19 +113,6 @@ class Designer implements IDesigner {
 			return this;
 		}
 		this.element.setAttribute('data-placeholder', message);
-		return this;
-	}
-
-	/**
-	 * Capture any change in the editor's content.
-	 */
-	whenMutations(callback: TMutationCallback): this {
-		if (!this.element) {
-			throw new Error(Messages.NO_ELEMENT_TO_OBSERVE);
-		}
-		this.mutation.on(this.element).capture(mutations => {
-			callback(mutations);
-		});
 		return this;
 	}
 }
