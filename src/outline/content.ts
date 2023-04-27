@@ -31,6 +31,7 @@ abstract class Content implements IContent {
 
 	constructor(blueprint?: TBlueprint) {
 		this.content = blueprint?.content ?? this.content;
+		this.id = blueprint?.id ?? this.id;
 	}
 
 	/**
@@ -39,6 +40,7 @@ abstract class Content implements IContent {
 	copy(): IContent {
 		const blueprint: TBlueprint = {
 			content: this.content,
+			id: this.id,
 		};
 		return new (this.constructor as TContentConstructor)(blueprint);
 	}

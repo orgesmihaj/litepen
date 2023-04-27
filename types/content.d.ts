@@ -28,4 +28,5 @@ export type TContentConstructor = new (blueprint?: TBlueprint) => IContent;
  */
 export type TBlueprint = {
 	content?: TContent;
+	id?: string;
 };
