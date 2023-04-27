@@ -1,20 +1,18 @@
 # EditorConfig
 # • Define formatting conventions for textual files in the project.
 
-root = true
-
 [*]
-indent_style = tab
+charset = utf-8
 end_of_line = lf
-insert_final_newline = true
-trim_trailing_whitespace = true
-max_line_length = 100
-
-[*.{js,ts}]
 indent_size = 2
-
-[*.{html,css}]
-indent_size = 4
-
-[*.md]
-trim_trailing_whitespace = false
+indent_style = tab
+insert_final_newline = false
+max_line_length = 80
+tab_width = 2
+ij_continuation_indent_size = 4
+ij_formatter_off_tag = @formatter:off
+ij_formatter_on_tag = @formatter:on
+ij_formatter_tags_enabled = true
+ij_smart_tabs = false
+ij_visual_guides = none
+ij_wrap_on_typing = true
