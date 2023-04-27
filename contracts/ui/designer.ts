@@ -26,12 +26,6 @@ interface IDesigner {
 	identifyAs(name: string): this;
 
 	/**
-	 * Insert the element at the caret position or
-	 * at the end of the holder.
-	 */
-	insert(element: HTMLElement): HTMLElement;
-
-	/**
 	 * Check if the element is editable.
 	 */
 	isEditable(): boolean;
