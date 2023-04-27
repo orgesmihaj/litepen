@@ -1,5 +1,6 @@
-import IContent from "@contracts/outline/content";
-import { TContentCatalogue } from "types/catalogue";
+import IContent from '@contracts/outline/content';
+import { TBlueprint } from 'types/content';
+import { TContentCatalogue } from 'types/catalogue';
 
 /**
  * Define content that can be part of the
@@ -9,7 +10,10 @@ interface ICatalogue {
 	/**
 	 * Pick a new piece of content from the catalogue.
 	 */
-	pick<Category extends keyof TContentCatalogue>(category: Category): IContent;
+	pick<TCategory extends keyof TContentCatalogue>(
+		category: TCategory,
+		blueprint?: TBlueprint
+	): IContent;
 }
 
 export default ICatalogue;

@@ -1,7 +1,8 @@
-import ICatalogue from "@contracts/outline/catalogue";
-import IContent from "@contracts/outline/content";
-import FParagraph from "@factories/outline/paragraph";
-import { TContentCatalogue } from "types/catalogue";
+import ICatalogue from '@contracts/outline/catalogue';
+import IContent from '@contracts/outline/content';
+import FParagraph from '@factories/outline/paragraph';
+import { TBlueprint } from 'types/content';
+import { TContentCatalogue } from 'types/catalogue';
 
 /**
  * Define content that can be part of the
@@ -18,8 +19,13 @@ class Catalogue implements ICatalogue {
 	/**
 	 * Pick a new piece of content from the catalogue.
 	 */
-	pick<Category extends keyof TContentCatalogue>(category: Category): IContent {
-		return this.catalogue[category].assemble();
+	pick<TCategory extends keyof TContentCatalogue>(
+		category: TCategory,
+		blueprint?: TBlueprint
+	): IContent {
+		return blueprint
+			? this.catalogue[category].assemble(blueprint)
+			: this.catalogue[category].assemble();
 	}
 }
 
