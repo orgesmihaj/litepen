@@ -1,40 +1,83 @@
 import { describe, it, expect } from 'vitest';
-import FOutline from '@factories/outline/outline';
-import FState from '@factories/state';
+import ICatalogue from '@contracts/outline/catalogue';
 import IContent from '@contracts/outline/content';
-import IOutline from '@contracts/outline/outline';
 import IState from '@contracts/state';
+import FCatalogue from '@factories/outline/catalogue';
+import FState from '@factories/state';
 
 /**
- * 🔎Editor's State instance:
- *
- * - must have a default content.
- * - should be able to write a piece of content to the editor's state.
+ * 🔎 Testing the `State` instance.
  */
-describe(`Editor's State instance`, () => {
-	const outline: IOutline = new FOutline().assemble();
+describe(`The State instance`, (): void => {
+	const catalogue: ICatalogue = new FCatalogue().assemble();
 
 	/**
-	 * Create a new state instance and check if the state's structure
-	 * contains a paragraph.
+	 * Writing a new paragraph to the state.
 	 */
-	it('must have a default content.', () => {
+	it('can write content to the state.', (): void => {
 		const state: IState = new FState().assemble();
-		const structure: Map<string, IContent> = state.structure();
-
-		expect(structure.size).toBe(1);
-	});
-
-	/**
-	 * Create a new state instance and write a paragraph to it.
-	 * Then check if the state's structure contains the paragraph.
-	 */
-	it("should be able to write a piece of content to the editor's state.", () => {
-		const state: IState = new FState().assemble();
-		const paragraph: IContent = outline.define('paragraph');
+		const paragraph: IContent = catalogue.pick('paragraph');
 
 		state.write(paragraph);
 
 		expect(state.has(paragraph)).toBe(true);
+	});
+
+	/**
+	 * Deleting a paragraph from the state.
+	 */
+	it('can delete content from the state.', (): void => {
+		const state: IState = new FState().assemble();
+		const paragraph: IContent = catalogue.pick('paragraph');
+
+		state.write(paragraph);
+		state.delete(paragraph);
+
+		expect(state.has(paragraph)).toBe(false);
+	});
+
+	/**
+	 * Checking whether the state is empty.
+	 */
+	it('can check whether the state is empty.', (): void => {
+		const state: IState = new FState().assemble();
+
+		expect(state.isEmpty()).toBe(true);
+	});
+
+	/**
+	 * Checking whether the state is not empty.
+	 */
+	it('can check whether the state is not empty.', (): void => {
+		const state: IState = new FState().assemble();
+		const paragraph: IContent = catalogue.pick('paragraph');
+
+		state.write(paragraph);
+
+		expect(state.isEmpty()).toBe(false);
+	});
+
+	/**
+	 * Checking whether the state contains a piece of content.
+	 */
+	it('can check whether the state contains a piece of content.', (): void => {
+		const state: IState = new FState().assemble();
+		const paragraph: IContent = catalogue.pick('paragraph');
+
+		state.write(paragraph);
+
+		expect(state.has(paragraph)).toBe(true);
+	});
+	
+	/**
+	 * Returning the content that has been written.
+	 */
+	it('can return the content that has been written.', (): void => {
+		const state: IState = new FState().assemble();
+		const paragraph: IContent = catalogue.pick('paragraph');
+
+		state.write(paragraph);
+
+		expect(state.structure()).toEqual(new Map().set(paragraph.id, paragraph));
 	});
 });
