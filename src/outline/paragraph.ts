@@ -1,5 +1,5 @@
 import { TContentCatalogue } from 'types/catalogue';
-import { TParagraph } from 'types/content';
+import { TBlueprint, TParagraph } from 'types/content';
 import Content from '@/outline/content';
 
 /**
@@ -9,6 +9,12 @@ class Paragraph extends Content {
 	protected content: TParagraph = {
 		text: '',
 	};
+
+	constructor(blueprint?: TBlueprint) {
+		super(blueprint);
+
+		this.content = blueprint?.content ?? this.content;
+	}
 
 	/**
 	 * Type of the content. This is used to identify the

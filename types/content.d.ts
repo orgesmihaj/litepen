@@ -8,14 +8,9 @@ export type TParagraph = {
 };
 
 /**
- * The structure of an empty content.
- */
-export type TEmptyContent = {};
-
-/**
  * The structure of a content.
  */
-export type TContent = TParagraph | TEmptyContent;
+export type TContent = TParagraph;
 
 /**
  * The structure of a content constructor.

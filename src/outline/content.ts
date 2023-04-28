@@ -11,7 +11,7 @@ abstract class Content implements IContent {
 	/**
 	 * The content written in the editor.
 	 */
-	protected content: TContent = {};
+	protected abstract content: TContent;
 
 	/**
 	 * Unique identifier of the content.
@@ -30,7 +30,6 @@ abstract class Content implements IContent {
 	readonly type: keyof TContentCatalogue = 'paragraph';
 
 	constructor(blueprint?: TBlueprint) {
-		this.content = blueprint?.content ?? this.content;
 		this.id = blueprint?.id ?? this.id;
 	}
 
