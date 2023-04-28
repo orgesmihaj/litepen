@@ -29,7 +29,7 @@ abstract class Content implements IContent {
 	 */
 	readonly type: keyof TContentCatalogue = 'paragraph';
 
-	constructor(blueprint?: TBlueprint) {
+	protected constructor(blueprint?: TBlueprint) {
 		this.id = blueprint?.id ?? this.id;
 	}
 
