@@ -10,17 +10,17 @@ class Paragraph extends Content {
 		text: '',
 	};
 
-	constructor(blueprint?: TBlueprint) {
-		super(blueprint);
-
-		this.content = blueprint?.content ?? this.content;
-	}
-
 	/**
 	 * Type of the content. This is used to identify the
 	 * content when it is added to the outline.
 	 */
 	readonly type: keyof TContentCatalogue = 'paragraph';
+
+	constructor(blueprint?: TBlueprint) {
+		super(blueprint);
+
+		this.content = blueprint?.content ?? this.content;
+	}
 
 	/**
 	 * Define the content's DOM element.
