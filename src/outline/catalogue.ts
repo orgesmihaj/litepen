@@ -23,9 +23,7 @@ class Catalogue implements ICatalogue {
 		category: TCategory,
 		blueprint?: TBlueprint
 	): IContent {
-		return blueprint
-			? this.catalogue[category].assemble(blueprint)
-			: this.catalogue[category].assemble();
+		return this.catalogue[category].assemble(blueprint);
 	}
 }
 
