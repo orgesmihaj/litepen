@@ -2,7 +2,7 @@ import IDesigner from '@contracts/designer/designer';
 import IEditor from '@contracts/editor';
 import IOutline from '@contracts/outline/outline';
 import IState from '@contracts/state';
-import IStateSubscriber from '@contracts/state/StateSubscriber';
+import IStateSubscriber from '@contracts/state/subscriber';
 import { TBlueprint } from 'types/editor';
 import { TState } from 'types/state';
 import Settings from '@/settings';
