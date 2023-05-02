@@ -1,4 +1,4 @@
-import IDesigner from '@contracts/ui/designer';
+import IDesigner from '@contracts/designer/designer';
 import IEditor from '@contracts/editor';
 import IOutline from '@contracts/outline/outline';
 import IState from '@contracts/state';

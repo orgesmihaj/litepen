@@ -1,8 +1,8 @@
-import IFactory from "@contracts/factory";
-import IKeyboard from "@contracts/ui/keyboard";
-import FListeners from "@factories/listeners";
-import Keyboard from "@ui/keyboard";
-import { TBlueprint } from "types/designer/keyboard";
+import IFactory from '@contracts/factory';
+import IKeyboard from '@contracts/designer/keyboard';
+import FListeners from '@factories/listeners';
+import Keyboard from '@/designer/keyboard';
+import { TBlueprint } from 'types/designer/keyboard';
 
 /**
  * Handle keyboard-related events.

@@ -1,6 +1,6 @@
-import IAccessibility from "@contracts/ui/accessibility";
-import IFactory from "@contracts/factory";
-import Accessibility from "@ui/accessibility";
+import IAccessibility from '@contracts/designer/accessibility';
+import IFactory from '@contracts/factory';
+import Accessibility from '@/designer/accessibility';
 
 /**
  * Make DOM elements accessible to screen readers.

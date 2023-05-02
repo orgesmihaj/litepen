@@ -1,8 +1,8 @@
-import IAccessibility from '@contracts/ui/accessibility';
+import IAccessibility from '@contracts/designer/accessibility';
 import ICatalogue from '@contracts/outline/catalogue';
-import IDesigner from '@contracts/ui/designer';
-import IKeyboard from '@contracts/ui/keyboard';
-import IMutation from '@contracts/ui/mutation';
+import IDesigner from '@contracts/designer/designer';
+import IKeyboard from '@contracts/designer/keyboard';
+import IMutation from '@contracts/designer/mutation';
 
 /**
  * The dependencies of the `Outline` instance.

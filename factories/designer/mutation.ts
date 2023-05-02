@@ -1,6 +1,6 @@
-import IFactory from "@contracts/factory";
-import IMutation from "@contracts/ui/mutation";
-import Mutation from "@ui/mutation";
+import IFactory from '@contracts/factory';
+import IMutation from '@contracts/designer/mutation';
+import Mutation from '@/designer/mutation';
 
 /**
  * Detect changes made to the element.

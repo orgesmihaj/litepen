@@ -1,7 +1,7 @@
-import IAccessibility from '@contracts/ui/accessibility';
-import IKeyboard from '@contracts/ui/keyboard';
+import IAccessibility from '@contracts/designer/accessibility';
+import IKeyboard from '@contracts/designer/keyboard';
 import IListeners from '@contracts/listeners';
-import IMutation from '@contracts/ui/mutation';
+import IMutation from '@contracts/designer/mutation';
 
 /**
  * The dependencies of the `Designer` instance.

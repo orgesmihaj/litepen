@@ -1,6 +1,6 @@
-import IAccessibility from "@contracts/ui/accessibility";
-import Settings from "@/settings";
-import HAccessibility from "@/helper/accessability";
+import IAccessibility from '@contracts/designer/accessibility';
+import Settings from '@/settings';
+import HAccessibility from '@/helper/accessability';
 
 /**
  * Make DOM elements accessible to screen readers.

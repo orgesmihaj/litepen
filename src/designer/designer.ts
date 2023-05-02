@@ -1,7 +1,7 @@
-import IAccessibility from '@contracts/ui/accessibility';
+import IAccessibility from '@contracts/designer/accessibility';
 import IContent from '@contracts/outline/content';
-import IDesigner from '@contracts/ui/designer';
-import IMutation from '@contracts/ui/mutation';
+import IDesigner from '@contracts/designer/designer';
+import IMutation from '@contracts/designer/mutation';
 import { TBlueprint } from 'types/designer/designer';
 import { TMutationCallback } from 'types/designer/mutation';
 import Messages from '@logger/messages';

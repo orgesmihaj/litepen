@@ -1,4 +1,4 @@
-import IMutation from '@contracts/ui/mutation';
+import IMutation from '@contracts/designer/mutation';
 import { TMutationCallback, TMutationDebounce } from 'types/designer/mutation';
 import Messages from '@logger/messages';
 import Settings from '../settings';
