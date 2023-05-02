@@ -1,5 +1,5 @@
 import IContent from '@contracts/outline/content';
-import IState from '@contracts/state';
+import IState from '@contracts/state/state';
 import IStateSubscriber from '@contracts/state/subscriber';
 import { TState } from 'types/state';
 

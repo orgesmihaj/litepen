@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import ICatalogue from '@contracts/outline/catalogue';
 import IContent from '@contracts/outline/content';
-import IState from '@contracts/state';
+import IState from '@contracts/state/state';
 import FCatalogue from '@factories/outline/catalogue';
 import FState from '@factories/state';
 
@@ -68,7 +68,7 @@ describe(`The State instance`, (): void => {
 
 		expect(state.has(paragraph)).toBe(true);
 	});
-	
+
 	/**
 	 * Returning the content that has been written.
 	 */

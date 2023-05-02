@@ -2,7 +2,7 @@ import ICatalogue from '@contracts/outline/catalogue';
 import IContent from '@contracts/outline/content';
 import IDesigner from '@contracts/designer/designer';
 import IOutline from '@contracts/outline/outline';
-import IState from '@contracts/state';
+import IState from '@contracts/state/state';
 import { TBlueprint } from 'types/outline';
 
 /**

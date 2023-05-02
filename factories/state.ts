@@ -1,6 +1,6 @@
-import IFactory from "@contracts/factory";
-import IState from "@contracts/state";
-import State from "@/state";
+import IFactory from '@contracts/factory';
+import IState from '@contracts/state/state';
+import State from '@/state/state';
 
 /**
  * Manage the state of the editor.
