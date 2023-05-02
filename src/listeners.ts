@@ -67,7 +67,7 @@ class Listeners implements IListeners {
 		if (!this.listeners.has(event)) {
 			return;
 		}
-		const callback: TListenerCallback = this.listeners.get(event);
+		const callback = this.listeners.get(event) as TListenerCallback;
 
 		this.element?.removeEventListener(event, callback);
 		this.listeners.delete(event);
