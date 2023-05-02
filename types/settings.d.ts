@@ -1,3 +1,5 @@
+import { TState } from 'types/state';
+
 export type TSettings = {
 	/**
 	 * Set the caret to the end of the editor's content.
@@ -32,7 +34,7 @@ export type TSettings = {
 	/**
 	 * Set a callback to be executed when the State is updated.
 	 */
-	onUpdate?: () => void;
+	onUpdate?: (state: TState) => void;
 
 	/*
 	 * Set a placeholder to the Editor.

@@ -2,10 +2,12 @@ import IDesigner from '@contracts/ui/designer';
 import IEditor from '@contracts/editor';
 import IOutline from '@contracts/outline/outline';
 import IState from '@contracts/state';
+import IStateSubscriber from '@contracts/state/StateSubscriber';
 import { TBlueprint } from 'types/editor';
+import { TState } from 'types/state';
 import Settings from '@/settings';
 
-class Editor implements IEditor {
+class Editor implements IEditor, IStateSubscriber {
 	/**
 	 * Modify the DOM of the editor.
 	 */
@@ -25,6 +27,8 @@ class Editor implements IEditor {
 		this.designer = blueprint.designer;
 		this.outline = blueprint.outline;
 		this.state = blueprint.state;
+
+		this.state.subscribe(this);
 	}
 
 	/**
@@ -38,6 +42,13 @@ class Editor implements IEditor {
 			.placeholder(Settings.get('placeholder'));
 
 		this.outline.compose(this.state);
+	}
+
+	/**
+	 * When the state is updated, this method is called.
+	 */
+	onUpdate(state: TState): void {
+		Settings.get('onUpdate')?.(state);
 	}
 }
 
