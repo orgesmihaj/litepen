@@ -1,6 +1,6 @@
+import { TContent } from 'types/content';
 import { TContentCatalogue } from 'types/catalogue';
 import Content from '@/outline/content';
-import { TContent } from 'types/content';
 
 /**
  * Define a paragraph as part of the editor's content.
