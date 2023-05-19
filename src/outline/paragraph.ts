@@ -1,5 +1,6 @@
 import { TContentCatalogue } from 'types/catalogue';
 import Content from '@/outline/content';
+import { TContent } from 'types/content';
 
 /**
  * Define a paragraph as part of the editor's content.
@@ -28,12 +29,8 @@ class Paragraph extends Content {
 	/**
 	 * Update the content.
 	 */
-	update(mutations: MutationRecord[]): void {
-		mutations.forEach(mutation => {
-			if (mutation.type === 'characterData') {
-				this.content.set('text', mutation.target.textContent ?? '');
-			}
-		});
+	update(revision: TContent): void {
+		this.content.set('text', revision.text);
 	}
 }
 

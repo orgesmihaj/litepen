@@ -1,6 +1,6 @@
 import IMutation from '@contracts/designer/mutation';
 import { TMutationCallback, TMutationDebounce } from 'types/designer/mutation';
-import Messages from '@logger/messages';
+import { TContent } from 'types/content';
 import Settings from '../settings';
 
 /**
@@ -10,16 +10,14 @@ class Mutation implements IMutation {
 	/**
 	 * The observable DOM element.
 	 */
-	private element: HTMLElement | undefined;
+	private element!: HTMLElement;
 
 	/**
 	 * Describe which DOM mutations should be reported
 	 * to mutationObserver's callback
 	 */
 	private options: MutationObserverInit = {
-		attributes: true,
 		characterData: true,
-		childList: true,
 		subtree: true,
 	};
 
@@ -27,10 +25,7 @@ class Mutation implements IMutation {
 	 * Capture any change in the element content.
 	 */
 	capture(onMutation: TMutationCallback): void {
-		if (!this.element) {
-			throw new Error(Messages.NO_ELEMENT_TO_OBSERVE);
-		}
-		const observer = new MutationObserver(
+		const observer: MutationObserver = new MutationObserver(
 			this.debounce(onMutation, Settings.get('debounce'))
 		);
 
@@ -50,8 +45,8 @@ class Mutation implements IMutation {
 		return (mutations: MutationRecord[]): void => {
 			clearTimeout(timeout);
 
-			timeout = setTimeout(() => {
-				onMutation(mutations);
+			timeout = setTimeout((): void => {
+				onMutation(this.revise(mutations));
 			}, pause);
 		};
 	}
@@ -63,6 +58,22 @@ class Mutation implements IMutation {
 		this.element = element;
 
 		return this;
+	}
+
+	/**
+	 * Revise the mutation records to fit the
+	 * content's format.
+	 */
+	revise(mutations: MutationRecord[]): TContent {
+		const revision: TContent = new Map();
+
+		mutations.forEach((mutation: MutationRecord): void => {
+			if (mutation.type === 'characterData') {
+				revision.set('text', mutation.target.textContent ?? '');
+			}
+		});
+
+		return revision;
 	}
 }
 

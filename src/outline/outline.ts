@@ -4,6 +4,7 @@ import IDesigner from '@contracts/designer/designer';
 import IOutline from '@contracts/outline/outline';
 import IState from '@contracts/state/state';
 import { TBlueprint } from 'types/outline';
+import { TContent } from 'types/content';
 
 /**
  * Define the outline of the editor's content.
@@ -55,8 +56,8 @@ class Outline implements IOutline {
 	define(content: IContent): void {
 		const element: HTMLElement = this.designer.create(content);
 
-		this.designer.on(element).onChange(mutations => {
-			content.update(mutations);
+		this.designer.on(element).onChange((revision: TContent) => {
+			content.update(revision);
 			this.state?.write(content);
 		});
 	}

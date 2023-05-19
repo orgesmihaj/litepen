@@ -1,4 +1,5 @@
 import { TContentCatalogue } from 'types/catalogue';
+import { TContent } from 'types/content';
 
 /**
  * Operations that are common to both simple
@@ -54,7 +55,7 @@ interface IContent {
 	/**
 	 * Update the content.
 	 */
-	update(mutations: MutationRecord[]): void;
+	update(revision: TContent): void;
 }
 
 export default IContent;
