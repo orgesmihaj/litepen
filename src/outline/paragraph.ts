@@ -30,7 +30,7 @@ class Paragraph extends Content {
 	 * Update the content.
 	 */
 	update(revision: TContent): void {
-		this.content.set('text', revision.text);
+		this.content.set('text', revision.get('text'));
 	}
 }
 
