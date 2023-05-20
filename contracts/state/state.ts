@@ -7,6 +7,11 @@ import { TState } from 'types/state';
  */
 interface IState {
 	/**
+	 * Clear the state.
+	 */
+	clear(): void;
+
+	/**
 	 * Remove the content from the state.
 	 */
 	delete(content: IContent): void;

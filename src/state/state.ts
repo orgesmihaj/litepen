@@ -18,6 +18,13 @@ class State implements IState {
 	private subscribers: Set<IStateSubscriber> = new Set();
 
 	/**
+	 * Clear the state.
+	 */
+	clear(): void {
+		this.state.clear();
+	}
+
+	/**
 	 * Remove the content from the state.
 	 */
 	delete(content: IContent): void {
