@@ -1,5 +1,6 @@
 import IDesigner from '@contracts/designer/designer';
 import IOutline from '@contracts/outline/outline';
+import IParser from '@contracts/state/parser';
 import IState from '@contracts/state/state';
 
 /**
@@ -15,6 +16,11 @@ export type TBlueprint = {
 	 * Define the outline of the editor's content.
 	 */
 	outline: IOutline;
+
+	/**
+	 * Parse state into different formats.
+	 */
+	parser: IParser;
 
 	/**
 	 * Manage the state of the editor.

@@ -2,6 +2,7 @@ import IEditor from '@contracts/editor';
 import IFactory from '@contracts/factory';
 import FDesigner from '@factories/designer/designer';
 import FOutline from '@factories/outline/outline';
+import FParser from '@factories/state/parser';
 import FState from '@factories/state';
 import { TBlueprint } from 'types/editor';
 import Editor from '@/editor';
@@ -21,6 +22,11 @@ class FEditor implements IFactory<IEditor> {
 			 * Define the outline of the editor's content.
 			 */
 			outline: new FOutline().assemble(),
+
+			/**
+			 * Parse state into different formats.
+			 */
+			parser: new FParser().assemble(),
 
 			/**
 			 * Manage the state of the editor.
