@@ -23,7 +23,7 @@ interface IContent {
 	add?(content: IContent): void;
 
 	/**
-	 * Return a copy of the content.
+	 * Return a copy of the `Content` instance.
 	 */
 	copy(): IContent;
 

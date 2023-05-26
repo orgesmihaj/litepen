@@ -35,7 +35,7 @@ abstract class Content implements IContent {
 	}
 
 	/**
-	 * Return a copy of the content.
+	 * Return a copy of the `Content` instance.
 	 */
 	copy(): IContent {
 		const blueprint: TBlueprint = {
