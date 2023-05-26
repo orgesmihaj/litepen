@@ -38,6 +38,11 @@ interface IContent {
 	erase?(content: IContent): void;
 
 	/**
+	 * Retrieve the content.
+	 */
+	get(): TContent;
+
+	/**
 	 * Determine whether the content is a composite
 	 * of one or more pieces of content.
 	 */

@@ -52,6 +52,13 @@ abstract class Content implements IContent {
 	abstract element(): HTMLElement;
 
 	/**
+	 * Retrieve the content.
+	 */
+	get(): TContent {
+		return this.content;
+	}
+
+	/**
 	 * Determine whether the content is a composite
 	 * of one or more pieces of content.
 	 */
