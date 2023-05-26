@@ -62,7 +62,7 @@ abstract class Content implements IContent {
 	/**
 	 * Update the content.
 	 */
-	abstract update(mutations: MutationRecord[]): void;
+	abstract update(revision: TContent): void;
 }
 
 export default Content;
