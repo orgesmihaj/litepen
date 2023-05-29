@@ -27,6 +27,11 @@ export type TSettings = {
 	extensions?: Array<any>;
 
 	/**
+	 * Set the Editor's parsing mode.
+	 */
+	format?: 'html' | 'json';
+
+	/**
 	 * Bind the Editor to a specific HTML element or selector.
 	 */
 	holder: Element;

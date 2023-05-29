@@ -19,6 +19,7 @@ class Settings {
 		debounce: 330,
 		editable: true,
 		extensions: [],
+		format: 'json',
 		holder: document.createElement('div'),
 		onUpdate: () => {},
 		placeholder: '',
