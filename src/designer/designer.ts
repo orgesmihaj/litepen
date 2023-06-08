@@ -6,6 +6,7 @@ import { TBlueprint } from 'types/designer/designer';
 import { TMutationCallback } from 'types/designer/mutation';
 import Messages from '@logger/messages';
 import Settings from '@/settings';
+import { TContent } from 'types/content';
 
 /**
  * Modify the DOM of an element.
@@ -95,11 +96,9 @@ class Designer implements IDesigner {
 	 * Capture any change in the editor's content.
 	 */
 	onChange(callback: TMutationCallback): this {
-		this.mutation
-			.on(this.element)
-			.capture((mutations: MutationRecord[]): void => {
-				callback(mutations);
-			});
+		this.mutation.on(this.element).capture((mutations: TContent): void => {
+			callback(mutations);
+		});
 
 		return this;
 	}

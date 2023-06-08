@@ -1,9 +1,9 @@
 {
-	"name": "litepen",
-	"version": "0.0.1",
+	"name": "@litepen/core",
+	"version": "1.0.0",
 	"description": "An extremely easy-to-install WYSIWYG editor of modern times. Focused on creating semantic content.",
 	"author": "Orges Mihaj (https://mihaj.org)",
-	"main": "index.js",
+	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
@@ -42,5 +42,17 @@
 	"lint-staged": {
 		"*.{js,jsx}": "eslint --cache --fix",
 		"*.lint:fix": "prettier --write"
+	},
+	"files": [
+		"dist"
+	],
+	"main": "./dist/composer.umd.cjs",
+	"module": "./dist/composer.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/composer.js",
+			"require": "./dist/composer.umd.cjs"
+		}
 	}
 }

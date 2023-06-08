@@ -10,28 +10,14 @@
 
 	<title>Litepen</title>
 </head>
-<body>
 
-<section class="playground">
+<body>
+<main class="playground">
 	<div class="playground__composer"></div>
 
 	<code class="playground__code" id="playground-code"></code>
-</section>
-
-<script type="module">
-	import Composer from "@/composer";
-
-	import '../assets/sass/semantic.scss';
-	import '../assets/sass/composer.scss';
-
-	new Composer({
-		format: 'json',
-		holder: document.querySelector('.playground__composer'),
-		placeholder: 'Write something cool...',
-		onUpdate: (state) => {
-			document.querySelector('#playground-code').innerHTML = JSON.stringify(state, null, 2);
-		}
-	});
-</script>
+</main>
+<script type="module" src="./src/main.ts"></script>
 </body>
+
 </html>
