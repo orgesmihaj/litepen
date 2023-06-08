@@ -1,9 +1,27 @@
 {
 	"name": "@litepen/core",
 	"version": "1.0.0",
+	"author": "Orges Mihaj",
 	"description": "An extremely easy-to-install WYSIWYG editor of modern times. Focused on creating semantic content.",
-	"author": "Orges Mihaj (https://mihaj.org)",
+	"keywords": [
+		"editor",
+		"WYSIWYG",
+		"JS",
+		"JavaScript"
+	],
 	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/composer.umd.cjs",
+	"module": "./dist/composer.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/composer.js",
+			"require": "./dist/composer.umd.cjs"
+		}
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
@@ -16,12 +34,6 @@
 		"prettier:fix": "npm run prettier -- --write",
 		"format": "npm run prettier:fix && npm run lint:fix"
 	},
-	"keywords": [
-		"editor",
-		"WYSIWYG",
-		"JS",
-		"JavaScript"
-	],
 	"license": "ISC",
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^5.59.9",
@@ -37,17 +49,5 @@
 		"typescript": "5.1.3",
 		"vite": "^4.3.9",
 		"vitest": "^0.32.0"
-	},
-	"files": [
-		"dist"
-	],
-	"main": "./dist/composer.umd.cjs",
-	"module": "./dist/composer.js",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"import": "./dist/composer.js",
-			"require": "./dist/composer.umd.cjs"
-		}
 	}
 }
