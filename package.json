@@ -39,13 +39,7 @@
 		"format": "npm run prettier:fix && npm run lint:fix"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^5.59.9",
-		"@typescript-eslint/parser": "^5.59.9",
-		"eslint": "^8.42.0",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-airbnb-typescript": "^17.0.0",
-		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-import": "^2.27.5",
+		"@litepen/eslint": "^1.0.0",
 		"jsdom": "^22.1.0",
 		"prettier": "2.8.8",
 		"sass": "^1.63.2",
