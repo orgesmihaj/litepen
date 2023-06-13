@@ -23,6 +23,7 @@ dist/
 !.vscode/launch.json
 !.vscode/extensions.json
 .eslintrc.cjs
+.eslintrc.js
 
 # OS generated files 
 .DS_Store
