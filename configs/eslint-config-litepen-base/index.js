@@ -11,7 +11,7 @@ module.exports = {
 	plugins: ['@typescript-eslint'],
 	extends: ['airbnb-base', 'airbnb-typescript/base', 'turbo', 'prettier'],
 	rules: {
-		...require('./rules/general.js').rules,
+		...require('./rules/javascript.js').rules,
 		...require('./rules/typescript.js').rules,
 	},
 	parserOptions: {
