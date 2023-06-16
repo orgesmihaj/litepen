@@ -8,9 +8,9 @@ importers:
 
   .:
     devDependencies:
-      '@litepen/eslint-config-litepen-base':
+      '@litepen/eslint-config-litepen':
         specifier: workspace:*
-        version: link:configs/eslint-config-litepen-base
+        version: link:configs/eslint-config-litepen
       jsdom:
         specifier: ^22.1.0
         version: 22.1.0
@@ -27,7 +27,7 @@ importers:
         specifier: ^0.32.0
         version: 0.32.0(jsdom@22.1.0)(sass@1.63.2)
 
-  configs/eslint-config-litepen-base:
+  configs/eslint-config-litepen:
     dependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.59.9

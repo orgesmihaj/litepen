@@ -1,5 +1,5 @@
 {
-  "name": "@litepen/eslint-config-litepen-base",
+  "name": "@litepen/eslint-config-litepen",
   "version": "1.0.0",
   "license": "MIT",
   "main": "index.js",
