@@ -9,11 +9,20 @@ module.exports = {
 	},
 	parser: '@typescript-eslint/parser',
 	plugins: ['@typescript-eslint'],
-	extends: ['airbnb-base', 'airbnb-typescript/base', 'turbo', 'prettier'],
-	rules: {
-		...require('./rules/javascript.js').rules,
-		...require('./rules/typescript.js').rules,
-	},
+	extends: [
+		'airbnb-base',
+		'airbnb-typescript/base',
+		'turbo',
+		'prettier',
+
+		/**
+		 * Litepen-specific rules.
+		 */
+		...[
+			'./rules/general.js',
+			'./rules/typescript.js',
+		].map(require.resolve)
+	],
 	parserOptions: {
 		ecmaVersion: 13,
 		sourceType: 'module',

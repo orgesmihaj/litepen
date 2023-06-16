@@ -38,7 +38,7 @@
 		"format": "npm run prettier:fix && npm run lint:fix"
 	},
 	"devDependencies": {
-		"@litepen/eslint-config-litepen-base": "^1.0.0",
+		"@litepen/eslint-config-litepen-base": "workspace:*",
 		"jsdom": "^22.1.0",
 		"sass": "^1.63.2",
 		"typescript": "5.1.3",

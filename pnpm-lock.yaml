@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@litepen/eslint-config-litepen-base':
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:configs/eslint-config-litepen-base
       jsdom:
         specifier: ^22.1.0
