@@ -21,7 +21,7 @@ module.exports = {
 		...[
 			'./rules/general.js',
 			'./rules/typescript.js',
-		].map(require.resolve)
+		].map(rule => require.resolve(rule))
 	],
 	parserOptions: {
 		ecmaVersion: 13,
