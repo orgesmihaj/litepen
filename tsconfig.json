@@ -1,38 +1,6 @@
 {
-  "compilerOptions": {
-	"baseUrl": ".",
-	"paths": {
-	  "@/*": ["./src/*"],
-	  "@assets/*": ["./assets/*"],
-	  "@contracts/*": ["./contracts/*"],
-	  "@factories/*": ["./factories/*"],
-	  "@logger/*": ["./src/logger/*"],
-	  "@ui/*": ["./src/ui/*"],
-	  "types/*": ["./types/*"],
-	},
-	"typeRoots": ["./types", "./node_modules/@types"],
-	"target": "ESNext",
-	"useDefineForClassFields": true,
-	"module": "ESNext",
-	"lib": ["ESNext", "DOM"],
-	"moduleResolution": "Node",
-	"strict": true,
-	"sourceMap": true,
-	"resolveJsonModule": true,
-	"esModuleInterop": true,
-	"noEmit": true,
-	"noUnusedLocals": true,
-	"noUnusedParameters": true,
-	"noImplicitReturns": true
-  },
-  "include": [
-	"vite.config.js",
-	"src/**/*.ts",
-	"tests/**/*.ts",
-	"typings/**/*.ts",
-	"types/**/*.ts",
-	"factories/**/*.ts",
-	"contracts/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+	"extends": "@litepen/tsconfig/base.json",
+	"exclude": [
+		"node_modules"
+	]
 }

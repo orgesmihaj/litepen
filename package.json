@@ -39,6 +39,7 @@
 	},
 	"devDependencies": {
 		"@litepen/eslint-config-litepen": "workspace:*",
+		"@litepen/tsconfig": "workspace:*",
 		"jsdom": "^22.1.0",
 		"sass": "^1.63.2",
 		"typescript": "5.1.3",

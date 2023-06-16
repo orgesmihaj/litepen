@@ -11,6 +11,9 @@ importers:
       '@litepen/eslint-config-litepen':
         specifier: workspace:*
         version: link:configs/eslint-config-litepen
+      '@litepen/tsconfig':
+        specifier: workspace:*
+        version: link:configs/tsconfig
       jsdom:
         specifier: ^22.1.0
         version: 22.1.0
@@ -54,12 +57,20 @@ importers:
         specifier: ^2.27.5
         version: 2.27.5(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)
 
+  configs/tsconfig: {}
+
   packages/workshop:
     dependencies:
       '@litepen/core':
         specifier: workspace:^
         version: link:../..
     devDependencies:
+      '@litepen/eslint-config-litepen':
+        specifier: workspace:*
+        version: link:../../configs/eslint-config-litepen
+      '@litepen/tsconfig':
+        specifier: workspace:*
+        version: link:../../configs/tsconfig
       typescript:
         specifier: ^5.0.2
         version: 5.0.4
