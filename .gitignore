@@ -4,6 +4,9 @@ node_modules/
 build/
 dist/
 
+# Monorepo
+.turbo
+
 # Logs
 .eslintcache
 .pnpm-debug.log
@@ -24,8 +27,7 @@ dist/
 !.vscode/extensions.json
 .DS_Store
 
-# OS generated files 
-.DS_Store
+# OS generated files
 .DS_Store?
 ._*
 .Spotlight-V100
