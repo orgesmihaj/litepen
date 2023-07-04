@@ -1,55 +1,44 @@
 {
 	"name": "@litepen/core",
 	"version": "1.0.0",
-	"license": "ISC",
+	"description": "A modern touch to your editor.",
+	"keywords": ["litepen", "editor", "WYSIWYG"],
 	"author": "Orges Mihaj",
-	"description": "An extremely easy-to-install WYSIWYG editor of modern times. Focused on creating semantic content.",
-	"keywords": [
-		"editor",
-		"WYSIWYG",
-		"JS",
-		"JavaScript"
-	],
-	"files": [
-		"dist"
-	],
-	"workspaces": [
-		"packages/*"
-	],
+	"license": "ISC",
+
+	"files": ["dist"],
+	"workspaces": ["packages/*"],
+	"type": "module",
 	"main": "./dist/composer.umd.cjs",
 	"module": "./dist/composer.js",
-	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/composer.js",
-			"require": "./dist/composer.umd.cjs"
+			"require": "./dist/composer.umd.cjs",
+			"types": "./types/composer.d.ts"
 		}
 	},
+
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"serve": "vite preview",
-		"test": "vitest",
-		"coverage": "vitest run --coverage",
-		"lint": "eslint --ext .js,.jsx --ignore-path .gitignore --fix ./",
-		"lint:fix": "npm run lint -- --fix",
-		"prettier": "npx prettier src test --check",
-		"prettier:fix": "npm run prettier -- --write",
-		"format": "npm run prettier:fix && npm run lint:fix"
+		"test": "vitest"
 	},
+
 	"devDependencies": {
 		"@litepen/eslint-config-litepen": "workspace:*",
-		"@litepen/tsconfig": "workspace:*",
 		"jsdom": "^22.1.0",
-		"sass": "^1.63.2",
-		"typescript": "5.1.3",
+		"sass": "^1.63.6",
+		"typescript": "5.1.6",
 		"vite": "^4.3.9",
-		"vitest": "^0.32.0"
+		"vitest": "^0.32.4"
 	},
+
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/orgesmihaj/litepen.git"
 	},
+
 	"bugs": {
 		"url": "https://github.com/orgesmihaj/litepen/issues"
 	}
