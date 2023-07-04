@@ -1,16 +1,16 @@
-import path from 'node:path';
+import { resolve } from 'path'
 
 /**
  * 🤝Aliases for importing modules.
  */
 const ALIASES = {
-	'@': path.resolve(__dirname, './src'),
-	'@assets': path.resolve(__dirname, './src/assets'),
-	'@contacts': path.resolve(__dirname, './contacts'),
-	'@factories': path.resolve(__dirname, './factories'),
-	'@logger': path.resolve(__dirname, './src/logger'),
-	'@src': path.resolve(__dirname, './src'),
-	'@types': path.resolve(__dirname, './types'),
+	'@': resolve(__dirname, './src'),
+	'@assets': resolve(__dirname, './src/assets'),
+	'@contacts': resolve(__dirname, './contacts'),
+	'@factories': resolve(__dirname, './factories'),
+	'@logger': resolve(__dirname, './src/logger'),
+	'@src': resolve(__dirname, './src'),
+	'@types': resolve(__dirname, './types'),
 }
 
 /**
@@ -18,8 +18,8 @@ const ALIASES = {
  */
 const LIBRARY_BUILD_CONFIG = {
 	cssCodeSplit: false,
-	entry: path.resolve(__dirname, 'src/composer.ts'),
-	fileName: 'composer.js',
+	entry: resolve(__dirname, 'src/composer.ts'),
+	fileName: 'composer',
 	formats: ['es', 'umd', 'cjs', 'iife'],
 	name: 'composer',
 	sourcemap: false,
@@ -32,6 +32,7 @@ const TEST_CONFIG = {
 	environment: 'jsdom',
 };
 
+/** @type {import('vite').UserConfig} */
 export default {
 	build: { lib: LIBRARY_BUILD_CONFIG },
 	resolve: { alias: ALIASES },
