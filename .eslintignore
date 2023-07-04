@@ -1,7 +1,9 @@
 # Nope. (￣ｰ￣)ﾉ
 
+# Project
 node_modules/
 dist/
+vite.config.js
 
 # Logs
 .eslintcache
