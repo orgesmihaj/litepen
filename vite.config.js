@@ -5,11 +5,12 @@ import { resolve } from 'path'
  */
 const ALIASES = {
 	'@': resolve(__dirname, './src'),
-	'@assets': resolve(__dirname, './src/assets'),
+	'@assets': resolve(__dirname, './assets'),
 	'@contacts': resolve(__dirname, './contacts'),
 	'@factories': resolve(__dirname, './factories'),
+	'@icons': resolve(__dirname, './assets/icons'),
 	'@logger': resolve(__dirname, './src/logger'),
-	'@src': resolve(__dirname, './src'),
+	'@sass': resolve(__dirname, './src/assets/sass'),
 	'@types': resolve(__dirname, './types'),
 }
 
