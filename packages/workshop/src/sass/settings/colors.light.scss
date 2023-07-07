@@ -1,0 +1,30 @@
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// COLORS - Light mode
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+@mixin light-color-scheme {
+  --brand-color: hsl(
+    var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
+  );
+
+  --accent-color: hsl(
+    var(--accent-hue) var(--accent-saturation) var(--accent-lightness)
+  );
+	
+  --text-color: hsl(var(--brand-hue) var(--brand-saturation) 5%);
+  --text-color-2: hsl(var(--brand-hue) 30% 15%);
+
+  --surface-color-1: hsl(var(--accent-hue) 25% 90%);
+  --surface-color-2: hsl(var(--accent-hue) 20% 99%);
+  --surface-color-3: hsl(var(--accent-hue) 20% 92%);
+  --surface-color-4: hsl(var(--accent-hue) 20% 85%);
+}
+
+/**
+ * Detect if the user has requested the light color theme.
+ */
+@media (prefers-color-scheme: light) {
+  :root {
+    @include light-color-scheme;
+  }
+}

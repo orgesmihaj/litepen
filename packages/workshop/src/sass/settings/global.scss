@@ -1,0 +1,14 @@
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// GLOBAL
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+:root {
+  --base-font-size: 16px;  
+  --base-line-height: 1.333;
+  --base-font-weight: 400;
+  --base-spacing-unit: 1.5rem;
+
+  --base-transition-timing: 330ms;
+  --base-transition-timing-function: ease-in-out;
+  --base-transition: all var(--base-transition-timing) var(--base-transition-timing-function);
+}

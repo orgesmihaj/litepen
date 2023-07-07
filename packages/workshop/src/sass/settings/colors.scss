@@ -1,0 +1,29 @@
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// COLORS
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+@import "colors.light";
+@import "colors.dim";
+@import "colors.dark";
+
+:root {
+  color-scheme: light dark;
+
+  /**
+   * Brand color
+   */
+  --brand-hue: 152;
+  --brand-saturation: 24%;
+  --brand-lightness: 55%;
+
+  /**
+   * Accent color
+   */
+  --accent-hue: 203;
+  --accent-saturation: 40%;
+  --accent-lightness: 44%;
+}
+
+[color-scheme="🌞"] { @include light-color-scheme; }
+[color-scheme="🌗"] { @include dim-color-scheme;   }
+[color-scheme="🌚"] { @include dark-color-scheme;  }

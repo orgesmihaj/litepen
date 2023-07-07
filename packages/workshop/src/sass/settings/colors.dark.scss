@@ -1,0 +1,28 @@
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// COLORS - Dark mode
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+@mixin dark-color-scheme {
+  color-scheme: dark;
+
+  --brand-color: hsl(
+    var(--brand-hue) calc(var(--brand-saturation) / 2) calc(var(--brand-lightness) / 1.5)
+  );
+
+  --text-color: hsl(var(--brand-hue) 10% 85%);
+  --text-color-2: hsl(var(--brand-hue) 5% 65%);
+
+  --surface-color-1: hsl(var(--accent-hue) 10% 10%);
+  --surface-color-2: hsl(var(--accent-hue) 10% 15%);
+  --surface-color-3: hsl(var(--accent-hue) 5% 20%);
+  --surface-color-4: hsl(var(--accent-hue) 5% 25%);
+}
+
+/**
+ * Detect if the user has requested the dark color theme.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-color-scheme;
+  }
+}

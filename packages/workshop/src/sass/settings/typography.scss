@@ -1,0 +1,26 @@
+/**
+ * TYPOGRAPHY
+ * 
+ * Roboto set with the perfect-fourth (1.333) modular 
+ * type scale for the headings and the perfect-fifth (1.5) 
+ * for the paragraphs. 
+ */
+
+:root {
+  --type-scale-ratio: 1.333; 
+
+  // 🏁             🏃🏾🏃‍♀️🏃       🏃‍♂️     🏃‍♀️🏃‍♂️                      🏃🏽                            🏃🏻                                                              🚶                                                                                                                                         
+  --h1-font-size: calc(1rem * var(--type-scale-ratio) * var(--type-scale-ratio) * var(--type-scale-ratio) * var(--type-scale-ratio) * var(--type-scale-ratio));
+  --h2-font-size: calc(1rem * var(--type-scale-ratio) * var(--type-scale-ratio) * var(--type-scale-ratio) * var(--type-scale-ratio));
+  --h3-font-size: calc(1rem * var(--type-scale-ratio) * var(--type-scale-ratio) * var(--type-scale-ratio));
+  --h4-font-size: calc(1rem * var(--type-scale-ratio) * var(--type-scale-ratio));
+  --h5-font-size: calc(1rem * var(--type-scale-ratio));
+   --p-font-size: 1rem;
+
+  --h1-line-height: calc(var(--h1-font-size) * var(--type-scale-ratio));
+  --h2-line-height: calc(var(--h2-font-size) * var(--type-scale-ratio));
+  --h3-line-height: calc(var(--h3-font-size) * var(--type-scale-ratio));
+  --h4-line-height: calc(var(--h4-font-size) * var(--type-scale-ratio));
+  --h5-line-height: calc(var(--h5-font-size) * var(--type-scale-ratio));
+   --p-line-height: calc(var(--p-font-size) * var(--type-scale-ratio));
+}
