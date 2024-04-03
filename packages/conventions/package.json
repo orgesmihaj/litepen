@@ -1,0 +1,11 @@
+{
+	"author": "Orges Mihaj",
+	"name": "@litepen/conventions",
+	"description": "A collection of conventions for the JavaScript ecosystem.",
+	"version": "1.0.0",
+	"type": "module",
+	"exports": {
+		"./biome": "./biome.jsonc"
+	},
+	"license": "ISC"
+}
