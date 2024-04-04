@@ -1,8 +1,7 @@
-import { TSettings } from 'types/settings';
-import Messages from '@logger/messages';
+import type { TSettings } from 'types/settings';
 
 /**
- * Manage the settings of the editor.
+ * 🛠Manage the configuration settings of the editor.
  */
 class Settings {
 	/**
@@ -22,61 +21,47 @@ class Settings {
 		format: 'json',
 		holder: document.createElement('div'),
 		onUpdate: () => {},
-		placeholder: '',
+		placeholder: 'Write something down...',
 	});
 
 	private constructor(settings: TSettings) {
-		if (settings?.holder === null) {
-			throw new Error(Messages.HOLDER_IS_MISSING);
-		}
-		Settings.overriddenBy(settings);
+		Settings.settings = settings;
 	}
 
 	/**
-	 * Get a list of all the settings.
+	 * Return a shallow copy of the current settings.
 	 */
-	static all(): TSettings {
-		return Settings.settings;
+	static all(): Readonly<TSettings> {
+		return { ...Settings.settings };
 	}
 
 	/**
 	 * Get the value of a specific setting.
 	 */
 	static get<Setting extends keyof TSettings>(
-		setting: Setting
-	): TSettings[Setting] {
+		setting: Setting,
+	): Readonly<TSettings[Setting]> {
 		return Settings.settings[setting];
 	}
 
 	/**
-	 * Override the default settings by the given ones.
-	 */
-	static overriddenBy(settings: TSettings): TSettings {
-		(Object.keys(settings) as Array<keyof TSettings>).map(setting =>
-			Settings.set(setting, settings[setting])
-		);
-		return Settings.all();
-	}
-
-	/**
-	 * Set a given configuration value.
+	 * Set a given configuration setting value.
 	 */
 	static set<Setting extends keyof TSettings>(
 		setting: Setting,
-		value: TSettings[Setting]
+		value: TSettings[Setting],
 	): void {
-		if (value === undefined) {
-			return;
-		}
 		Settings.settings[setting] = value;
 	}
 
 	/**
-	 * Create a singleton instance of the Settings class.
+	 * Create a singleton instance of the Settings class,
+	 * ensuring only one instance exists. If no settings are provided,
+	 * it uses the default settings.
 	 */
-	static use(settings: TSettings): Settings {
+	static use(settings?: TSettings): Settings {
 		if (!Settings.instance) {
-			Settings.instance = new Settings(settings ?? this.settings);
+			Settings.instance = new Settings({ ...Settings.settings, ...settings });
 		}
 		return Settings.instance;
 	}
