@@ -1,0 +1,9 @@
+/**
+ * Placeholder styles 🌈
+ */
+
+[contenteditable='true'][data-placeholder]:has(> :empty)::before {
+    content: attr(data-placeholder);
+    display: block;
+    pointer-events: none;
+}
