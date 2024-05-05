@@ -1,5 +1,6 @@
-import IFactory from '@contracts/factory';
-import IState from '@contracts/state/state';
+import type IFactory from '@contracts/factory';
+import type IState from '@contracts/state/state';
+
 import State from '@/state/state';
 
 /**
