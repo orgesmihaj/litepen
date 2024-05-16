@@ -1,23 +1,32 @@
-import IComposer from '@contracts/composer';
-import FEditor from '@factories/editor';
-import { TSettings } from 'types/settings';
-import Settings from '@/settings';
+import type IEditor from 'contracts/editor';
+import type IState from 'contracts/state/state';
+import FEditor from 'factories/editor';
+import FState from 'factories/state';
+import type { TSettings } from 'types/settings';
+
+import Settings from './settings';
 
 /**
- * What's on your mind? ...✏️
+ * What's on your mind? ...
  */
-class Composer implements IComposer {
+class Composer {
 	constructor(settings: TSettings) {
-		this.build(settings);
+		Settings.use(settings);
+
+		this.assemble();
 	}
 
 	/**
-	 * Build the composer.
+	 * Assemble the editor.
 	 */
-	build(settings: TSettings): void {
-		Settings.use(settings);
+	private assemble(): void {
+		const editor: IEditor = new FEditor().assemble();
+		const state: IState = new FState().assemble();
 
-		new FEditor().assemble().ignite();
+		editor.editable(Settings.get('editable'))
+		editor.setPlaceholder(Settings.get('placeholder'));
+
+		editor.compose(state);
 	}
 }
 
