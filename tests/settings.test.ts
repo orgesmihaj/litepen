@@ -5,8 +5,9 @@ import { describe, expect, it } from 'vitest';
 /**
  * 🔎
  */
-describe('Settings', () => {
-	it('should create a singleton instance', () => {
+describe('Settings', (): void => {
+
+	it('should return a singleton instance', (): void => {
 		expect(Settings.use()).toBe(Settings.use());
 	});
 
@@ -23,7 +24,16 @@ describe('Settings', () => {
 		expect(settings.placeholder).toBe('Write something down...');
 	});
 
-	it('should allow setting a new value for a setting', () => {
+	it('should be able to retrieve a setting', () => {
+		const settings = Settings.all();
+		const placeholder = Settings.get('placeholder');
+		const debounce = Settings.get('debounce');
+
+		expect(placeholder).toBe(settings.placeholder);
+		expect(debounce).toBe(settings.debounce);
+	});
+
+	it('should be able to update a setting', () => {
 		Settings.set('autofocus', false);
 		Settings.set('debounce', 500);
 		Settings.set('editable', false);
