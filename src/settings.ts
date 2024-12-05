@@ -1,12 +1,25 @@
 import type { TSettings } from 'types/settings';
 
 /**
- * 🛠Manage the configuration settings of the editor.
+ * # 🛠 Manage the configuration settings of the editor.
+ *
+ * This class implements a `Singleton` pattern to centralize and manage
+ * the configuration settings for the editor. It ensures consistent
+ * settings throughout the application and provides methods for:
+ *
+ * Usage:
+ * - Access the singleton instance via `Settings.use()` method.
+ * - Update or retrieve specific settings as needed.
+ *
+ * Example:
+ * ```ts
+ * const settings = Settings.use({ editable: false });
+ * const placeholder = Settings.get('placeholder');
+ * Settings.set('debounce', 500);
+ * ```
  */
 class Settings {
-	/**
-	 * A singleton instance of the Settings class.
-	 */
+
 	private static instance: Settings;
 
 	/**
@@ -25,14 +38,14 @@ class Settings {
 	});
 
 	private constructor(settings: TSettings) {
-		Settings.settings = settings;
+		Settings.settings = {...Settings.settings, ...settings};
 	}
 
 	/**
 	 * Return a shallow copy of the current settings.
 	 */
 	static all(): Readonly<TSettings> {
-		return { ...Settings.settings };
+		return Object.freeze({ ...Settings.settings });
 	}
 
 	/**
@@ -55,13 +68,15 @@ class Settings {
 	}
 
 	/**
-	 * Create a singleton instance of the Settings class,
+	 * Create a singleton instance of the `Settings` class,
 	 * ensuring only one instance exists. If no settings are provided,
 	 * it uses the default settings.
 	 */
-	static use(settings?: TSettings): Settings {
+	static use(settings?: Partial<TSettings>): Settings {
 		if (!Settings.instance) {
-			Settings.instance = new Settings({ ...Settings.settings, ...settings });
+			Settings.instance = new Settings({...Settings.settings, ...settings });
+
+			Object.freeze(Settings.instance);
 		}
 		return Settings.instance;
 	}
