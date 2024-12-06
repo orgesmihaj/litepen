@@ -1,34 +1,54 @@
-import IContent from '@contracts/outline/content';
-import IState from '@contracts/state/state';
-import IStateSubscriber from '@contracts/state/subscriber';
-import { TState } from 'types/state';
+import type IContent from 'contracts/outline/content';
+import type IState from 'contracts/state/state';
+import type IStateSubscriber from 'contracts/state/subscriber';
+
+import type { TState } from 'types/state';
 
 /**
- * Manage the state of the editor.
+ * # 🗃 Manage the editor's state.
+ *
+ * A centralized, immutable store for all editor content.
+ * It encapsulates the current set of `IContent` items and ensures that any modifications
+ * produce a new state snapshot. This immutability approach helps maintain
+ * a predictable and testable state flow.
+ *
+ * Usage:
+ * - Call `write(content)` to add or update content.
+ * - Call `delete(content)` to remove content by its identifier.
+ * - Call `clear()` to reset the state to an empty set.
+ * - Subscribe to changes via `subscribe()` and `unsubscribe()` to keep track of updates
+ *   in real-time.
+ *
+ * Example:
+ * ```ts
+ * const state = new State();
+ * const content: IContent = { id: '123', ... };
+ *
+ * state.write(content);
+ *
+ * if (state.has(content)) {
+ *   console.log('Content is in the state');
+ * }
+ *
+ * state.delete(content);
+ *
+ * state.subscribe({
+ *   announce: (snapshot) => console.log('State updated:', snapshot)
+ * });
+ * ```
  */
 class State implements IState {
-	/**
-	 * The content that has been written to the state.
-	 */
+
 	private state: TState = new Map();
 
-	/**
-	 * The subscribers that are listening to the state.
-	 */
-	private subscribers: Set<IStateSubscriber> = new Set();
+	private readonly subscribers: Set<IStateSubscriber> = new Set();
 
 	/**
-	 * Clear the state.
+	 * Return a snapshot of the current state as a new Map,
+	 * ensuring external code cannot mutate the internal state.
 	 */
-	clear(): void {
-		this.state.clear();
-	}
-
-	/**
-	 * Remove the content from the state.
-	 */
-	delete(content: IContent): void {
-		this.state.delete(content.id);
+	structure(): TState {
+		return new Map(this.state);
 	}
 
 	/**
@@ -39,21 +59,51 @@ class State implements IState {
 	}
 
 	/**
-	 * Check whether the state is empty.
+	 * Checks whether the state currently holds any content.
 	 */
 	isEmpty(): boolean {
 		return this.state.size === 0;
 	}
 
 	/**
-	 * Return the content that has been written.
+	 * Write a piece of content into the state,
+	 * then notify subscribers.
 	 */
-	structure(): TState {
-		return this.state;
+	write(content: IContent): void {
+		const state: TState = this.structure();
+		state.set(content.id, content);
+		this.state = state;
+
+		this.notifySubscribers();
 	}
 
 	/**
-	 * Subscribe to the state.
+	 * Remove the content from the state if it exists,
+	 * then notify subscribers.
+	 */
+	delete(content: IContent): void {
+		if (!this.has(content)) {
+			return;
+		}
+
+		const state: TState = this.structure();
+		state.delete(content.id);
+		this.state = state;
+
+		this.notifySubscribers();
+	}
+
+	/**
+	 * Clear the state and notify subscribers.
+	 */
+	clear(): void {
+		this.state = new Map();
+
+		this.notifySubscribers();
+	}
+
+	/**
+	 * Register a subscriber to be notified on state changes.
 	 */
 	subscribe(subscriber: IStateSubscriber): IStateSubscriber {
 		this.subscribers.add(subscriber);
@@ -62,21 +112,22 @@ class State implements IState {
 	}
 
 	/**
-	 * Unsubscribe from the state.
+	 * Unregister a previously subscribed entity, stopping it
+	 * from receiving notifications.
 	 */
 	unsubscribe(subscriber: IStateSubscriber): void {
 		this.subscribers.delete(subscriber);
 	}
 
 	/**
-	 * Write a piece of content to the state.
+	 * Notify all subscribers of the current state snapshot.
 	 */
-	write(content: IContent): void {
-		this.state.set(content.id, content.copy());
+	private notifySubscribers(): void {
+		const snapshot: TState = this.structure();
 
-		this.subscribers.forEach((subscriber: IStateSubscriber) => {
-			subscriber.onUpdate(this.state);
-		});
+		for (const subscriber of this.subscribers) {
+			subscriber.announce(snapshot);
+		}
 	}
 }
 

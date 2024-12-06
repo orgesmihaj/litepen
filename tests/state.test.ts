@@ -1,83 +1,108 @@
-import { describe, it, expect } from 'vitest';
-import ICatalogue from '@contracts/outline/catalogue';
-import IContent from '@contracts/outline/content';
-import IState from '@contracts/state/state';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import type ICatalogue from '@contracts/outline/catalogue';
+import type IContent from '@contracts/outline/content';
+import type IState from '@contracts/state/state';
+import type IStateSubscriber from 'contracts/state/subscriber';
 import FCatalogue from '@factories/outline/catalogue';
 import FState from '@factories/state';
+import { TState } from 'types/state';
 
 /**
- * 🔎 Testing the `State` instance.
+ * 🔎
  */
-describe(`The State instance`, (): void => {
-	const catalogue: ICatalogue = new FCatalogue().assemble();
+describe('State', (): void => {
+	let catalogue: ICatalogue;
+	let state: IState;
 
-	/**
-	 * Writing a new paragraph to the state.
-	 */
-	it('can write content to the state.', (): void => {
-		const state: IState = new FState().assemble();
-		const paragraph: IContent = catalogue.pick('paragraph');
-
-		state.write(paragraph);
-
-		expect(state.has(paragraph)).toBe(true);
+	beforeEach((): void => {
+		catalogue = new FCatalogue().assemble();
+		state = new FState().assemble();
 	});
 
-	/**
-	 * Deleting a paragraph from the state.
-	 */
-	it('can delete content from the state.', (): void => {
-		const state: IState = new FState().assemble();
-		const paragraph: IContent = catalogue.pick('paragraph');
-
-		state.write(paragraph);
-		state.delete(paragraph);
-
-		expect(state.has(paragraph)).toBe(false);
+	it(`initially should be empty`, (): void => {
+		expect(state.isEmpty()).toBe(true);
+		expect(state.structure().size).toBe(0);
 	});
 
-	/**
-	 * Checking whether the state is empty.
-	 */
-	it('can check whether the state is empty.', (): void => {
-		const state: IState = new FState().assemble();
+	it(`should write content and reflect in the structure`, (): void => {
+		const content: IContent = catalogue.pick('paragraph');
 
+		state.write(content);
+
+		expect(state.isEmpty()).toBe(false);
+		expect(state.has(content)).toBe(true);
+
+		const snapshot: TState = state.structure();
+
+		expect(snapshot.size).toBe(1);
+		expect(snapshot.get(content.id)).toBe(content);
+	});
+
+	it(`should delete existing content`, (): void => {
+		const content: IContent = catalogue.pick('paragraph');
+
+		state.write(content);
+
+		expect(state.has(content)).toBe(true);
+
+		state.delete(content);
+
+		expect(state.has(content)).toBe(false);
 		expect(state.isEmpty()).toBe(true);
 	});
 
-	/**
-	 * Checking whether the state is not empty.
-	 */
-	it('can check whether the state is not empty.', (): void => {
-		const state: IState = new FState().assemble();
-		const paragraph: IContent = catalogue.pick('paragraph');
+	it(`should not fail when deleting non-existing content`, (): void => {
+		const content: IContent = catalogue.pick('paragraph');
 
-		state.write(paragraph);
+		expect((): void => state.delete(content)).not.toThrow();
+		expect(state.isEmpty()).toBe(true);
+	});
+
+	it(`should clear the state`, (): void => {
+		const content: IContent = catalogue.pick('paragraph');
+
+		state.write(content);
 
 		expect(state.isEmpty()).toBe(false);
+
+		state.clear();
+
+		expect(state.isEmpty()).toBe(true);
+		expect(state.structure().size).toBe(0);
 	});
 
-	/**
-	 * Checking whether the state contains a piece of content.
-	 */
-	it('can check whether the state contains a piece of content.', (): void => {
-		const state: IState = new FState().assemble();
-		const paragraph: IContent = catalogue.pick('paragraph');
+	it(`should notify subscribers on state changes`, (): void => {
+		const subscriber: IStateSubscriber = { announce: vi.fn() };
+		const content: IContent = catalogue.pick('paragraph');
 
-		state.write(paragraph);
+		state.subscribe(subscriber);
+		state.write(content);
 
-		expect(state.has(paragraph)).toBe(true);
+		expect(subscriber.announce).toHaveBeenCalledTimes(1);
 	});
 
-	/**
-	 * Returning the content that has been written.
-	 */
-	it('can return the content that has been written.', (): void => {
-		const state: IState = new FState().assemble();
-		const paragraph: IContent = catalogue.pick('paragraph');
+	it(`should stop notifying unsubscribed subscribers`, (): void => {
+		const editor: IStateSubscriber = { announce: vi.fn() };
+		const parser: IStateSubscriber = { announce: vi.fn() };
 
-		state.write(paragraph);
+		state.subscribe(editor);
+		state.subscribe(parser);
 
-		expect(state.structure()).toEqual(new Map().set(paragraph.id, paragraph));
+		const content: IContent = catalogue.pick('paragraph');
+
+		state.write(content);
+
+		expect(editor.announce).toHaveBeenCalledTimes(1);
+		expect(parser.announce).toHaveBeenCalledTimes(1);
+
+		state.unsubscribe(parser);
+
+		const newContent: IContent = catalogue.pick('paragraph');
+
+		state.write(newContent);
+
+		expect(editor.announce).toHaveBeenCalledTimes(2);
+		expect(parser.announce).toHaveBeenCalledTimes(1);
 	});
 });
