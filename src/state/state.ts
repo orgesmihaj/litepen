@@ -21,8 +21,9 @@ import type { TState } from 'types/state';
  *
  * Example:
  * ```ts
- * const state = new State();
- * const content: IContent = { id: '123', ... };
+ * const editor: IEditor = new FEditor().assemble();
+ * const state: IState = new FState().assemble();
+ * const content: IContent = new FCatalogue().assemble().pick('paragraph');
  *
  * state.write(content);
  *
@@ -32,9 +33,7 @@ import type { TState } from 'types/state';
  *
  * state.delete(content);
  *
- * state.subscribe({
- *   announce: (snapshot) => console.log('State updated:', snapshot)
- * });
+ * state.subscribe(editor);
  * ```
  */
 class State implements IState {
