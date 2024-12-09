@@ -1,9 +1,0 @@
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// EDITOR
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-[data-editor='editor'][contenteditable='true']:empty:before {
-	content: attr(placeholder);
-	display: block;
-	pointer-events: none;
-}
