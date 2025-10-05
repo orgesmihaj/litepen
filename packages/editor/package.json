@@ -1,0 +1,41 @@
+{
+  "name": "@litepen/editor",
+  "description": "A lightweight, extensible text editor",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/composer.js",
+  "module": "./dist/composer.js",
+  "types": "./dist/composer.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/composer.d.ts",
+      "import": "./dist/composer.js"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build && tsc --emitDeclarationOnly --declaration",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "clean": "rm -rf dist node_modules"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@litepen/conventions": "workspace:*",
+    "jsdom": "^27.0.0",
+    "postcss": "8.5.6",
+    "postcss-preset-env": "^10.4.0",
+    "sass": "^1.93.2",
+    "typescript": "5.9.3",
+    "vite": "7.1.9",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vitest": "3.2.4"
+  }
+}

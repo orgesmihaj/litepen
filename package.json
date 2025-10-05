@@ -1,47 +1,22 @@
 {
-	"name": "@litepen/editor",
-	"version": "1.0.0",
-	"description": "A modern touch to your editor.",
-	"keywords": ["litepen", "editor", "WYSIWYG"],
-	"author": "Orges Mihaj",
-	"license": "ISC",
-
-	"files": ["dist"],
-	"workspaces": ["packages/*"],
-	"type": "module",
-	"main": "./dist/composer.umd.cjs",
-	"module": "./dist/composer.js",
-	"exports": {
-		".": {
-			"import": "./dist/composer.js",
-			"require": "./dist/composer.umd.cjs",
-			"types": "./types/composer.d.ts"
-		}
-	},
-
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"test": "vitest"
-	},
-
-	"devDependencies": {
-		"@biomejs/biome": "1.7.1",
-		"@litepen/conventions": "workspace:*",
-		"jsdom": "^24.0.0",
-		"sass": "^1.77.1",
-		"typescript": "5.4.5",
-		"vite": "5.2.11",
-		"vite-plugin-css-injected-by-js": "^3.5.1",
-		"vitest": "^1.6.0"
-	},
-
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/orgesmihaj/litepen.git"
-	},
-
-	"bugs": {
-		"url": "https://github.com/orgesmihaj/litepen/issues"
-	}
+  "name": "@litepen/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel --filter playground --filter editor dev",
+    "build": "pnpm --filter editor build",
+    "build:all": "pnpm --filter \"./packages/*\" build",
+    "test": "pnpm --filter editor test",
+    "test:all": "pnpm --filter \"./packages/*\" test",
+    "lint": "pnpm --filter \"./packages/*\" lint",
+    "format": "pnpm --filter \"./packages/*\" format",
+    "clean": "pnpm --filter \"./packages/*\" clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
 }

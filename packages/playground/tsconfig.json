@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@litepen/editor": ["../editor/src/composer.ts"],
+      "@litepen/editor/*": ["../editor/src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../editor" }
+  ]
+}

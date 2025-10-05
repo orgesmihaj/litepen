@@ -1,0 +1,20 @@
+/**
+ * Composer styles  🌈
+ */
+
+[contenteditable='true'] {
+    position: relative;
+}
+
+[contenteditable='true']:empty::before,
+[contenteditable='true']:has(:empty)::before,
+[contenteditable='true']:has(br:only-child)::before {
+    content: attr(placeholder);
+    display: block;
+    padding-block: inherit;
+    padding-inline: inherit;
+    pointer-events: none;
+    position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+}

@@ -1,98 +1,27 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
+  "$schema": "https://json.schemastore.org/tsconfig",
 
-	"compilerOptions": {
-		"baseUrl": ".",
-
-		"target": "ES2022",
-		"module": "ES2022",
-		"lib": ["ES2022", "DOM"],
-
-		/**
-		 * The directory where the output files will be generated.
-		 */
-		"outDir": "./dist",
-
-		/**
-		 * Generate corresponding `.d.ts` declaration files when
-		 * compiling the code.
-		 */
-		"declaration": true,
-		"declarationMap": true,
-
-		/**
-		 * Make sure that the case of the filename matches
-		 * the case of the file on disk.
-		 */
-		"forceConsistentCasingInFileNames": true,
-
-		/**
-		 * Every file is treated as a module. It prevents using
-		 * constructs that are not safe to transpile to a single file.
-		 */
-		"isolatedModules": true,
-
-		/**
-		 * Determine how modules get resolved.
-		 */
-		"moduleResolution": "Node",
-
-		/**
-		 * Generate source maps (files that help debuggers map
-		 * the compiled JavaScript back to the original TypeScript).
-		 */
-		"sourceMap": true,
-
-		/**
-		 * Enables a wide range of type checking behavior that can
-		 * potentially lead to stronger guarantees of program correctness.
-		 */
-		"strict": true,
-
-		/**
-		 * Re-map imports to additional lookup locations.
-		 */
-		"paths": {
-			"@litepen/core": ["./node_modules/@litepen/core"],
-			"@/*": ["./src/*"],
-			"@assets/*": ["./assets/*"],
-			"@contracts/*": ["./contracts/*"],
-			"@designer/*": ["./src/designer/*"],
-			"@factories/*": ["./factories/*"],
-			"@icons/*": ["./assets/icons/*"],
-			"@logger/*": ["./src/logger/*"],
-			"@sass/*": ["./assets/sass/*"],
-			"types/*": ["./types/*"]
-		},
-
-		/**
-		 * Specify the locations where TypeScript should look for
-		 * type declarations.
-		 */
-		"typeRoots": [
-			"./types",
-			"./types/designer",
-			"./types/state",
-			"./node_modules/@types"
-		]
-	},
-
-	/**
-	 * Files to be included in compilation.
-	 */
-	"include": [
-		"./contracts",
-		"./factories",
-		"./src",
-		"./tests",
-		"./types",
-		"vite.config.js"
-	],
-
-	/**
-	 * Files to be excluded from compilation.
-	 */
-	"exclude": [
-		"node_modules"
-	]
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "files": []
 }

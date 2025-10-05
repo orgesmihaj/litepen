@@ -1,0 +1,45 @@
+{
+  "extends": "../../tsconfig.json",
+
+  "compilerOptions": {
+//    "baseUrl": ".",
+    "outDir": "./dist",
+//    "rootDir": "./src",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    "paths": {
+      "@litepen/editor": ["./src/composer.ts"],
+      "@litepen/editor/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "assets/*": ["./assets/*"],
+      "contracts/*": ["./contracts/*"],
+      "factories/*": ["./factories/*"],
+      "logger/*": ["./src/logger/*"],
+      "styles/*": ["./styles/*"],
+      "types/*": ["./types/*"]
+    },
+
+    /**
+     * Specify the locations where TypeScript should look for
+     * type declarations.
+     */
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ]
+  },
+
+  /**
+   * Files to be included in compilation.
+   */
+  "include": [
+    "contracts",
+    "factories",
+    "tests",
+    "src/**/*",
+    "types/**/*",
+    "vite.config.js"
+  ]
+}

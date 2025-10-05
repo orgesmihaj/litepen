@@ -1,0 +1,19 @@
+{
+  "name": "@litepen/playground",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist node_modules"
+  },
+  "dependencies": {
+    "@litepen/editor": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vite": "7.1.9"
+  }
+}

@@ -1,0 +1,43 @@
+import type {
+	IAccessibility
+} from "contracts/designer/accessibility";
+import type { IKeyboard } from "contracts/designer/keyboard";
+import type { IMutation } from "contracts/designer/mutation";
+import type { IListeners } from "contracts/listeners";
+
+/**
+ * The dependencies of the `Designer` instance.
+ */
+export type TBlueprint = {
+	/**
+	 * Make DOM elements accessible to screen readers.
+	 */
+	accessibility: IAccessibility;
+
+	/**
+	 * Handle keyboard-related events.
+	 */
+	keyboard: IKeyboard;
+
+	/**
+	 * A subscription mechanism to the editor's events.
+	 */
+	listeners: IListeners;
+
+	/**
+	 * Detect changes made to the element.
+	 */
+	mutation: IMutation;
+};
+
+/**
+ * The type of the attributes of the composer.
+ *
+ * @note: This type is used in the dummyComposer() method
+ * 				for testing purposes.
+ * */
+export type TComposerAttributes =
+	| {
+			[key: string]: string;
+	  }
+	| [];
