@@ -3,13 +3,16 @@
   "description": "A lightweight, extensible text editor",
   "version": "0.0.1",
   "type": "module",
-  "main": "./dist/composer.js",
-  "module": "./dist/composer.js",
-  "types": "./dist/composer.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/composer.d.ts",
-      "import": "./dist/composer.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/public-types.d.ts"
     },
     "./styles": "./dist/style.css"
   },
@@ -18,7 +21,8 @@
   ],
   "scripts": {
     "dev": "vite build --watch",
-    "build": "vite build && tsc --emitDeclarationOnly --declaration",
+    "dev:release": "vite build --watch",
+    "build": "vite build && rm -f tsconfig.tsbuildinfo && tsc --emitDeclarationOnly --declaration",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "biome check .",

@@ -7,8 +7,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
 	build: {
 		lib: {
-			entry: resolve(__dirname, './src/composer.ts'),
-			fileName: 'composer',
+			entry: resolve(__dirname, './index.ts'),
+			fileName: 'index',
 			formats: ['es'],
 		},
 		rollupOptions: {
@@ -27,7 +27,7 @@ export default defineConfig({
 			assets: resolve(__dirname, './assets'),
 			contracts: resolve(__dirname, './contracts'),
 			factories: resolve(__dirname, './factories'),
-			logger: resolve(__dirname, './src/logger'),
+			logger: resolve(__dirname, './src/shared/logger'),
 			styles: resolve(__dirname, './styles'),
 			types: resolve(__dirname, './types'),
 		}

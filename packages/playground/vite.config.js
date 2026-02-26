@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
 	resolve: {
 		alias: {
-			'@litepen/editor': resolve(__dirname, '../editor/src/composer.ts'),
+			'@litepen/editor': resolve(__dirname, '../editor/index.ts'),
 		},
 	},
 	server: {
