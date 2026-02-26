@@ -2,8 +2,11 @@
   "name": "@litepen/monorepo",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@10.30.2",
   "scripts": {
-    "dev": "pnpm --parallel --filter playground --filter editor dev",
+    "dev": "pnpm run dev:fast",
+    "dev:fast": "pnpm --filter playground dev:fast",
+    "dev:release": "pnpm --parallel --filter editor --filter playground dev:release",
     "build": "pnpm --filter editor build",
     "build:all": "pnpm --filter \"./packages/*\" build",
     "test": "pnpm --filter editor test",
@@ -16,7 +19,7 @@
     "typescript": "5.9.3"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=9.0.0"
+    "node": ">=22.12.0 <25",
+    "pnpm": ">=10.30.2 <11"
   }
 }
