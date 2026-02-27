@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "pnpm run dev:fast",
+    "dev:fast": "vite --config vite.config.js",
+    "dev:release": "vite --config vite.config.release.js",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist node_modules"
@@ -14,6 +16,6 @@
   },
   "devDependencies": {
     "typescript": "5.9.3",
-    "vite": "7.1.9"
+    "vite": "7.3.1"
   }
 }
